@@ -1,0 +1,224 @@
+/* ============================================================================
+   VANILLA ERP — TOTAL RE-ENGINEERING v6.0
+   LETAK: apps/erpx_theme/erpx_theme/public/css/vanilla_final.css
+   STATUS: UNCOMPROMISED FULL OVERRIDE
+   ============================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap');
+
+/* 01. ROOT VARIABLES - DEEP RE-MAPPING */
+:root {
+    --primary: #dc3545;
+    --primary-color: #dc3545;
+    --btn-primary: #dc3545;
+    
+    /* Mapping Blue to Vanilla Red */
+    --blue-50: #fdf2f2; --blue-100: #fde8e8; --blue-200: #fbd5d5;
+    --blue-300: #f8b4b4; --blue-400: #f98080; --blue-500: #dc3545;
+    --blue-600: #c82333; --blue-700: #bd2130; --blue-800: #a71d2a; --blue-900: #8b1a24;
+    
+    /* Branding */
+    --red-50: #fdf2f2; --red-100: #fde8e8; --red-500: #dc3545; --red-600: #c82333;
+
+    /* Layout & Surface */
+    --bg-page: #f0f1f4 !important;
+    --bg-card: #ffffff !important;
+    --sb-width: 260px;
+    --sb-bg: linear-gradient(180deg, #dc3545 0%, #a71d2a 50%, #8b1a24 100%);
+    --font-family: 'Cairo', sans-serif;
+    
+    /* Elevation */
+    --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-sidebar: 10px 0 30px rgba(139, 26, 36, 0.2);
+}
+
+/* 02. GLOBAL FORCE */
+html, body {
+    font-family: var(--font-family) !important;
+    background-color: var(--bg-page) !important;
+    color: #111827 !important;
+}
+
+/* 03. THE SIDEBAR ENGINE (NO REDUCTION) */
+.layout-side-section {
+    position: fixed !important;
+    left: 15px !important;
+    top: 75px !important;
+    width: var(--sb-width) !important;
+    height: calc(100vh - 90px) !important;
+    background: var(--sb-bg) !important;
+    border-radius: 16px !important;
+    padding: 20px 10px !important;
+    box-shadow: var(--shadow-sidebar) !important;
+    border: none !important;
+    z-index: 1010;
+    overflow: visible !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Sidebar Icons - MASSIVE VERSION */
+.sidebar-item-icon {
+    width: 24px !important;
+    height: 24px !important;
+    margin-right: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.sidebar-item-icon svg, .sidebar-item-icon use {
+    width: 22px !important; /* UKURAN GEDE PLEK KETIPLEK */
+    height: 22px !important;
+    fill: rgba(255,255,255,0.7) !important;
+    stroke: rgba(255,255,255,0.7) !important;
+    stroke-width: 1.5px !important;
+}
+
+/* Active Icon */
+.selected .sidebar-item-icon svg, .selected .sidebar-item-icon use {
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+}
+
+/* Sidebar Labels */
+.sidebar-item-label {
+    color: rgba(255,255,255,0.85) !important;
+    font-weight: 300 !important;
+    font-size: 14.5px !important;
+}
+
+.selected .sidebar-item-label {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+}
+
+/* 04. EDIT MODE LOGIC (FULL CONTROL) */
+/* Sembunyikan kontrol drag & titik tiga jika BUKAN mode edit */
+.standard-sidebar-section:not(.show-control) .sidebar-item-control {
+    display: none !important;
+}
+
+.standard-sidebar-section.show-control .sidebar-item-control {
+    display: flex !important;
+    gap: 4px;
+}
+
+/* Sidebar Item Row */
+.desk-sidebar-item {
+    padding: 12px 15px !important;
+    margin-bottom: 5px !important;
+    border-radius: 10px !important;
+    border-left: 4px solid transparent !important;
+    transition: all 0.2s ease;
+}
+
+.desk-sidebar-item:hover {
+    background: rgba(0,0,0,0.15) !important;
+    transform: translateX(5px);
+}
+
+.desk-sidebar-item.selected {
+    background: rgba(0,0,0,0.2) !important;
+    border-left: 4px solid #ffffff !important;
+}
+
+/* 05. NAVBAR - TOTAL CLEAN UP */
+.navbar {
+    height: 61px !important;
+    background: #ffffff !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
+}
+
+.search-bar input {
+    border-radius: 20px !important;
+    background: #f1f5f9 !important;
+    border: 1px solid transparent !important;
+}
+
+/* 06. MAIN CONTENT - FLOATING CARDS ENGINE */
+.layout-main-section-wrapper {
+    margin-left: calc(var(--sb-width) + 30px) !important;
+    padding: 20px 30px 0 0 !important;
+    width: auto !important;
+}
+
+.layout-main-section.frappe-card, .form-section, .widget {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 16px !important;
+    box-shadow: var(--shadow-card) !important;
+    padding: 30px !important;
+    margin-bottom: 25px !important;
+}
+
+/* Form Headings Style (Palmer style) */
+.section-head, .workspace-section-head {
+    background: #f8fafc !important;
+    margin: -30px -30px 20px -30px !important;
+    padding: 15px 30px !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    border-radius: 16px 16px 0 0 !important;
+    color: #1e293b !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px;
+}
+
+/* 07. INPUT FIELDS - FULL OVERHAUL */
+.form-control, input.form-control, select.form-control, textarea.form-control {
+    background-color: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    height: 42px !important;
+    padding: 10px 15px !important;
+}
+
+.form-control:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 4px rgba(220, 53, 69, 0.1) !important;
+}
+
+.control-label {
+    font-weight: 600 !important;
+    color: #475569 !important;
+    font-size: 12.5px !important;
+}
+
+/* 08. DATA TABLES & LIST VIEW */
+.list-row-head {
+    background: #f8fafc !important;
+    border-bottom: 2px solid #e2e8f0 !important;
+    height: 45px !important;
+}
+
+.list-row {
+    height: 55px !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+    transition: background 0.1s;
+}
+
+.list-row:hover {
+    background-color: #fff9f9 !important;
+}
+
+/* Pagination & Footers */
+.list-paging-area {
+    border-top: 1px solid #e2e8f0 !important;
+    padding: 15px !important;
+}
+
+/* 09. RESPONSIVE COMPATIBILITY */
+@media (max-width: 991px) {
+    .layout-main-section-wrapper {
+        margin-left: 0 !important;
+        padding: 15px !important;
+    }
+    .layout-side-section {
+        left: -300px !important; /* Hide off canvas */
+    }
+    body.side-menu-open .layout-side-section {
+        left: 10px !important;
+    }
+}

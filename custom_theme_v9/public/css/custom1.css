@@ -1,0 +1,342 @@
+/* ==========================================================================
+   ERPNext Full Premium Workspace Theme
+   HARD OVERRIDE VERSION
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ======================================================
+   ROOT
+   ====================================================== */
+:root{
+    --sidebar-width: 260px;
+    --navbar-height: 58px;
+
+    --primary:#dc3545;
+    --primary-dark:#b02a37;
+
+    --bg:#f5f7fb;
+    --card:#ffffff;
+    --text:#111827;
+    --muted:#6b7280;
+    --border:#e5e7eb;
+
+    --radius:16px;
+
+    --shadow-sm:0 2px 8px rgba(0,0,0,.04);
+    --shadow-md:0 8px 24px rgba(0,0,0,.06);
+}
+
+/* ======================================================
+   GLOBAL
+   ====================================================== */
+html,
+body{
+    font-family:'Inter',sans-serif !important;
+    background:var(--bg)!important;
+    color:var(--text)!important;
+}
+
+/* ======================================================
+   NAVBAR
+   ====================================================== */
+.navbar{
+    height:var(--navbar-height)!important;
+    background:#fff!important;
+    border:none!important;
+    box-shadow:0 1px 0 rgba(0,0,0,.05)!important;
+    z-index:1050!important;
+}
+
+.navbar .container{
+    max-width:100%!important;
+}
+
+/* ======================================================
+   HIDE ERP SIDEBAR
+   ====================================================== */
+.layout-side-section,
+.desk-sidebar,
+.standard-sidebar,
+.sidebar-menu{
+    display:none!important;
+    visibility:hidden!important;
+    width:0!important;
+}
+
+/* ======================================================
+   WORKSPACE SIDEBAR
+   ====================================================== */
+.workspace-sidebar,
+.layout-side-section{
+    display:block!important;
+    visibility:visible!important;
+    position:fixed!important;
+    top:var(--navbar-height)!important;
+    left:0!important;
+    width:var(--sidebar-width)!important;
+    height:calc(100vh - var(--navbar-height))!important;
+    background:#ffffff!important;
+    border-right:1px solid var(--border)!important;
+    padding:20px 14px!important;
+    overflow-y:auto!important;
+    z-index:1000!important;
+    box-shadow:var(--shadow-sm)!important;
+}
+
+/* sidebar title */
+.workspace-sidebar .title,
+.layout-side-section .title{
+    font-size:22px!important;
+    font-weight:700!important;
+    color:var(--text)!important;
+    margin-bottom:24px!important;
+}
+
+/* section label */
+.workspace-sidebar .sidebar-label,
+.layout-side-section .sidebar-label{
+    color:var(--muted)!important;
+    font-size:11px!important;
+    text-transform:uppercase!important;
+    letter-spacing:.08em!important;
+    font-weight:700!important;
+    margin:18px 12px 8px!important;
+}
+
+/* menu item */
+.workspace-sidebar a,
+.layout-side-section a{
+    display:flex!important;
+    align-items:center!important;
+    gap:10px!important;
+    padding:12px 14px!important;
+    margin-bottom:4px!important;
+    border-radius:12px!important;
+    color:#374151!important;
+    font-size:14px!important;
+    font-weight:500!important;
+    transition:all .2s ease!important;
+}
+
+.workspace-sidebar a:hover,
+.layout-side-section a:hover{
+    background:#f3f4f6!important;
+    color:var(--primary)!important;
+}
+
+.workspace-sidebar .selected,
+.layout-side-section .selected{
+    background:rgba(220,53,69,.10)!important;
+    color:var(--primary)!important;
+    font-weight:600!important;
+}
+
+/* icons */
+.workspace-sidebar svg,
+.layout-side-section svg,
+.workspace-sidebar .icon,
+.layout-side-section .icon{
+    width:18px!important;
+    height:18px!important;
+}
+
+/* ======================================================
+   MAIN CONTENT SHIFT
+   ====================================================== */
+.layout-main-section,
+.app-content-body,
+#body{
+    margin-left:var(--sidebar-width)!important;
+    width:calc(100% - var(--sidebar-width))!important;
+    max-width:none!important;
+    padding:28px!important;
+    background:var(--bg)!important;
+}
+
+/* ======================================================
+   PAGE HEAD
+   ====================================================== */
+.page-head{
+    background:transparent!important;
+    border:none!important;
+    margin-bottom:20px!important;
+    padding:0!important;
+}
+
+.page-head h3,
+.page-title{
+    font-size:28px!important;
+    font-weight:700!important;
+    color:var(--text)!important;
+}
+
+/* ======================================================
+   WORKSPACE CONTAINER
+   ====================================================== */
+.layout-main-section .layout-main,
+.layout-main-section .workspace-body{
+    background:transparent!important;
+    border:none!important;
+    box-shadow:none!important;
+}
+
+/* ======================================================
+   SHORTCUT CARDS
+   ====================================================== */
+.shortcut-widget-box,
+.widget.shortcut-widget-box{
+    background:#fff!important;
+    border:none!important;
+    border-radius:14px!important;
+    padding:18px 18px!important;
+    box-shadow:var(--shadow-sm)!important;
+    transition:all .25s ease!important;
+}
+
+.shortcut-widget-box:hover{
+    transform:translateY(-2px)!important;
+    box-shadow:var(--shadow-md)!important;
+}
+
+.shortcut-widget-box .widget-label{
+    font-weight:600!important;
+    color:var(--text)!important;
+}
+
+/* ======================================================
+   SECTION WRAPPER
+   ====================================================== */
+.widget-group,
+.workspace-widget{
+    background:#fff!important;
+    border:none!important;
+    border-radius:18px!important;
+    padding:22px!important;
+    box-shadow:var(--shadow-sm)!important;
+    margin-bottom:24px!important;
+}
+
+/* ======================================================
+   SECTION TITLES
+   ====================================================== */
+.widget-head,
+.widget-group .widget-head,
+.section-head{
+    font-size:20px!important;
+    font-weight:700!important;
+    color:var(--text)!important;
+    margin-bottom:18px!important;
+    border:none!important;
+}
+
+/* ======================================================
+   INNER CARDS
+   ====================================================== */
+.link-item,
+.standard-widget,
+.widget.links-widget-box{
+    background:#fff!important;
+    border:none!important;
+    border-radius:16px!important;
+    box-shadow:var(--shadow-sm)!important;
+    padding:18px!important;
+}
+
+/* ======================================================
+   LINKS
+   ====================================================== */
+.widget-body a{
+    color:#374151!important;
+    font-weight:500!important;
+    transition:all .2s ease!important;
+}
+
+.widget-body a:hover{
+    color:var(--primary)!important;
+    padding-left:4px!important;
+}
+
+/* ======================================================
+   FORM SECTION
+   ====================================================== */
+.form-section{
+    background:#fff!important;
+    border:none!important;
+    border-radius:18px!important;
+    box-shadow:var(--shadow-sm)!important;
+    padding:24px!important;
+    margin-bottom:20px!important;
+}
+
+/* ======================================================
+   INPUT
+   ====================================================== */
+.form-control{
+    border:1px solid var(--border)!important;
+    border-radius:12px!important;
+    min-height:42px!important;
+    box-shadow:none!important;
+}
+
+.form-control:focus{
+    border-color:var(--primary)!important;
+    box-shadow:0 0 0 3px rgba(220,53,69,.12)!important;
+}
+
+/* ======================================================
+   BUTTON
+   ====================================================== */
+.btn-primary{
+    background:var(--primary)!important;
+    border:none!important;
+    border-radius:12px!important;
+    padding:10px 18px!important;
+    font-weight:600!important;
+}
+
+.btn-primary:hover{
+    background:var(--primary-dark)!important;
+}
+
+/* ======================================================
+   TABLE
+   ====================================================== */
+.table{
+    background:#fff!important;
+    border-radius:14px!important;
+    overflow:hidden!important;
+}
+
+.table thead{
+    background:#f9fafb!important;
+}
+
+.table td,
+.table th{
+    border-color:#f1f3f5!important;
+    padding:14px!important;
+}
+
+/* ======================================================
+   MOBILE
+   ====================================================== */
+@media(max-width:991px){
+
+    .workspace-sidebar,
+    .layout-side-section{
+        transform:translateX(-100%);
+        transition:.3s;
+    }
+
+    body.sidebar-open .workspace-sidebar{
+        transform:translateX(0);
+    }
+
+    .layout-main-section,
+    .app-content-body,
+    #body{
+        margin-left:0!important;
+        width:100%!important;
+    }
+}

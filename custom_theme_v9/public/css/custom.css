@@ -1,0 +1,244 @@
+/* ==========================================================================
+   ERPNext Custom Theme — Professional Clean UI
+   Author: Senior ERPNext Dev Mode
+   ========================================================================== */
+
+/* =========================
+   ROOT VARIABLES
+   ========================= */
+:root {
+    --primary: #dc3545;
+    --primary-hover: #c82333;
+
+    --bg-main: #f4f6f9;
+    --bg-card: #ffffff;
+
+    --text-main: #212529;
+    --text-muted: #6c757d;
+
+    --border-soft: #e6e9ed;
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+
+    --shadow-sm: 0 2px 6px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+    --shadow-lg: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   GLOBAL RESET
+   ========================= */
+body {
+    background: var(--bg-main) !important;
+    font-family: 'Cairo', sans-serif !important;
+    color: var(--text-main);
+}
+
+a {
+    text-decoration: none !important;
+}
+
+/* =========================
+   NAVBAR
+   ========================= */
+.navbar {
+    background: #ffffff !important;
+    border-bottom: 1px solid var(--border-soft) !important;
+    box-shadow: var(--shadow-sm);
+}
+
+/* =========================
+   SIDEBAR
+   ========================= */
+#custom-sidebar {
+    background: linear-gradient(180deg, #dc3545, #a71d2a) !important;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.08);
+}
+
+.sidebar-modules-list a {
+    color: rgba(255,255,255,0.85) !important;
+    border-radius: var(--radius-sm);
+    margin: 4px 8px;
+}
+
+.sidebar-modules-list a:hover {
+    background: rgba(255,255,255,0.12) !important;
+    color: #fff !important;
+}
+
+/* =========================
+   CONTENT WRAPPER
+   ========================= */
+.app-content-body {
+    padding: 24px !important;
+    background: var(--bg-main) !important;
+}
+
+/* =========================
+   PAGE HEADER
+   ========================= */
+.page-head {
+    background: transparent !important;
+    border: none !important;
+    margin-bottom: 20px;
+}
+
+.page-title {
+    font-size: 22px !important;
+    font-weight: 600;
+}
+
+/* =========================
+   CARD SYSTEM
+   ========================= */
+.card,
+.widget,
+.layout-main-section > div,
+.report-wrapper,
+.form-section,
+.desk-page .widget-group {
+
+    background: var(--bg-card) !important;
+    border-radius: var(--radius-lg) !important;
+    border: none !important;
+    box-shadow: var(--shadow-sm) !important;
+    padding: 18px;
+    transition: all 0.2s ease;
+}
+
+.card:hover,
+.widget:hover {
+    box-shadow: var(--shadow-md) !important;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   SHORTCUT BOX
+   ========================= */
+.shortcut-widget-box {
+    border-radius: var(--radius-md) !important;
+    padding: 12px 14px !important;
+    background: #ffffff !important;
+    box-shadow: var(--shadow-sm);
+}
+
+.shortcut-widget-box:hover {
+    box-shadow: var(--shadow-md);
+}
+
+/* =========================
+   LIST STYLE
+   ========================= */
+.widget-links a {
+    display: block;
+    padding: 6px 0;
+    color: var(--text-main);
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.widget-links a:hover {
+    color: var(--primary);
+    padding-left: 4px;
+}
+
+/* =========================
+   BUTTON
+   ========================= */
+.btn-primary {
+    background: var(--primary) !important;
+    border: none !important;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover) !important;
+}
+
+/* =========================
+   FORM
+   ========================= */
+.form-control {
+    border-radius: var(--radius-sm) !important;
+    border: 1px solid var(--border-soft) !important;
+    padding: 8px 12px;
+}
+
+.form-control:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 2px rgba(220,53,69,0.1);
+}
+
+/* =========================
+   TABLE
+   ========================= */
+.table {
+    background: #fff;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.table thead {
+    background: #f1f3f5;
+}
+
+.table td, .table th {
+    border-top: 1px solid var(--border-soft);
+}
+
+/* =========================
+   MODAL
+   ========================= */
+.modal-content {
+    border-radius: var(--radius-lg);
+    border: none;
+    box-shadow: var(--shadow-lg);
+}
+
+/* =========================
+   SCROLLBAR
+   ========================= */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.15);
+    border-radius: 3px;
+}
+
+/* =========================
+   ANIMATION
+   ========================= */
+* {
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 991px) {
+    .app-content-body {
+        padding: 16px !important;
+    }
+}
+
+/* =========================
+   EXTRA POLISH
+   ========================= */
+.widget-head {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.control-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+/* END FILE */

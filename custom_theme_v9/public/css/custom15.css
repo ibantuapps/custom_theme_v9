@@ -1,0 +1,400 @@
+/* =========================================================
+   ERPNext Modern Clean Theme v5.0
+   BIRU UNGU EDITION ✨
+   Simple • Readable • Modern
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* =========================================================
+   ROOT SYSTEM - BIRU UNGU
+   ========================================================= */
+:root {
+    /* Primary Colors */
+    --primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --primary-soft: rgba(102, 126, 234, 0.08);
+    --primary-hover: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+    
+    /* Backgrounds */
+    --bg-main: #f8fafc;
+    --bg-card: #ffffff;
+    --bg-hover: rgba(102, 126, 234, 0.04);
+    
+    /* Text */
+    --text-main: #1e293b;
+    --text-soft: #64748b;
+    
+    /* Borders */
+    --border: #e2e8f0;
+    
+    /* Shapes */
+    --radius: 12px;
+    --radius-lg: 16px;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 6px rgba(0,0,0,0.04);
+    --shadow-md: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+html, body {
+    font-family: 'Inter', sans-serif !important;
+    background: var(--bg-main) !important;
+    color: var(--text-main) !important;
+    font-size: 14px !important;
+}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+.navbar {
+    background: #fff !important;
+    border-bottom: 1px solid var(--border) !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03) !important;
+    height: 60px !important;
+}
+
+/* =========================================================
+   SIDEBAR - CLEAN & DEFAULT STRUCTURE
+   ========================================================= */
+.layout-side-section {
+    width: 250px !important;
+    min-width: 250px !important;
+    background: #fff !important;
+    border-right: 1px solid var(--border) !important;
+    padding: 14px 10px !important;
+    overflow: visible !important;
+}
+
+/* Section Label (PUBLIC/Personal) - COLLAPSE BUTTON */
+.standard-sidebar-label {
+    padding: 12px 10px 8px !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    color: var(--text-soft) !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    border-radius: 8px !important;
+    transition: all .2s ease !important;
+}
+
+.standard-sidebar-label:hover {
+    background: var(--bg-hover) !important;
+    color: #5a67d8 !important;
+}
+
+/* Menu Items */
+.desk-sidebar-item,
+.standard-sidebar-item {
+    border-radius: 10px !important;
+    padding: 8px 12px !important;
+    margin-bottom: 2px !important;
+    transition: all .2s ease !important;
+}
+
+/* Hover */
+.desk-sidebar-item:hover,
+.standard-sidebar-item:hover {
+    background: var(--bg-hover) !important;
+}
+
+/* Active */
+.desk-sidebar-item.selected,
+.standard-sidebar-item.selected {
+    background: var(--primary-soft) !important;
+    color: #5a67d8 !important;
+    font-weight: 600 !important;
+}
+
+/* Text */
+.sidebar-item-label {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+}
+
+/* Icons - NORMAL SIZE */
+.sidebar-item-icon {
+    width: 20px !important;
+    height: 20px !important;
+}
+
+.sidebar-item-icon svg,
+.sidebar-item-icon use {
+    width: 18px !important;
+    height: 18px !important;
+}
+
+/* Sidebar Controls - EDIT MODE ONLY */
+.sidebar-item-control {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: all .15s ease !important;
+}
+
+/* Show in Edit Mode */
+.desk-sidebar.show-control .sidebar-item-control,
+.standard-sidebar-section.show-control .sidebar-item-control {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Chevron Always Visible */
+.sidebar-item-control .drop-icon {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Control Buttons */
+.sidebar-item-control .btn,
+.sidebar-item-control .drag-handle,
+.sidebar-item-control .setting-btn {
+    width: 24px !important;
+    height: 24px !important;
+    border-radius: 6px !important;
+    background: transparent !important;
+    color: var(--text-soft) !important;
+    transition: all .15s ease !important;
+}
+
+.sidebar-item-control .btn:hover,
+.sidebar-item-control .drag-handle:hover,
+.sidebar-item-control .setting-btn:hover {
+    background: rgba(102, 126, 234, 0.12) !important;
+    color: #5a67d8 !important;
+}
+
+/* =========================================================
+   MAIN CONTENT - FULL WIDTH
+   ========================================================= */
+.layout-main-section-wrapper,
+.workspace-wrapper,
+.page-body {
+    max-width: 100% !important;
+    width: 100% !important;
+    background: var(--bg-main) !important;
+}
+
+.layout-main-section {
+    background: transparent !important;
+    padding: 24px 28px !important;
+}
+
+/* =========================================================
+   CARDS - MODERN CLEAN
+   ========================================================= */
+.widget,
+.widget-group,
+.workspace-widget,
+.links-widget-box,
+.frappe-card,
+.form-layout {
+    background: var(--bg-card) !important;
+    border-radius: var(--radius-lg) !important;
+    border: 1px solid var(--border) !important;
+    box-shadow: none !important;
+    padding: 20px 24px !important;
+    transition: all .2s ease !important;
+    margin-bottom: 20px !important;
+}
+
+/* Hover Effect */
+.widget:hover,
+.workspace-widget:hover,
+.frappe-card:hover {
+    border-color: rgba(102, 126, 234, 0.2) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+/* Shortcut Cards */
+.shortcut-widget-box {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius) !important;
+    padding: 14px 16px !important;
+    box-shadow: none !important;
+    transition: all .2s ease !important;
+}
+
+.shortcut-widget-box:hover {
+    background: var(--bg-hover) !important;
+    border-color: rgba(102, 126, 234, 0.2) !important;
+}
+
+/* Card Headers */
+.widget-head,
+.workspace-section-head,
+.section-head {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: var(--text-soft) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    margin-bottom: 16px !important;
+    padding-bottom: 12px !important;
+    border-bottom: 1px solid var(--border) !important;
+}
+
+/* Links */
+.widget a,
+.links-widget-box a {
+    display: block !important;
+    font-size: 14px !important;
+    color: var(--text-soft) !important;
+    padding: 6px 0 !important;
+    transition: all .2s ease !important;
+}
+
+.widget a:hover,
+.links-widget-box a:hover {
+    color: #5a67d8 !important;
+    padding-left: 4px !important;
+}
+
+/* =========================================================
+   FORM - CLEAN MODERN
+   ========================================================= */
+.form-control,
+input.form-control,
+select.form-control,
+.list-filters input {
+    border-radius: var(--radius) !important;
+    border: 1px solid var(--border) !important;
+    background: #fff !important;
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    box-shadow: none !important;
+    transition: all .15s ease !important;
+    height: auto !important;
+}
+
+.form-control:focus,
+.list-filters input:focus {
+    border-color: #5a67d8 !important;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.08) !important;
+    outline: none !important;
+}
+
+/* Labels */
+.control-label,
+.form-label,
+.list-sidebar-label {
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    color: var(--text-soft) !important;
+    margin-bottom: 6px !important;
+}
+
+/* Form Spacing */
+.form-group,
+.section-break {
+    margin-bottom: 20px !important;
+}
+
+/* =========================================================
+   BUTTONS - MODERN
+   ========================================================= */
+.btn-primary {
+    background: var(--primary) !important;
+    border: none !important;
+    border-radius: var(--radius) !important;
+    padding: 8px 18px !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    box-shadow: none !important;
+    transition: all .2s ease !important;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.btn-default,
+.btn-secondary {
+    border-radius: var(--radius) !important;
+    border: 1px solid var(--border) !important;
+    background: #fff !important;
+    font-weight: 500 !important;
+}
+
+/* =========================================================
+   LIST VIEW & TABLE
+   ========================================================= */
+.list-main-section .result,
+.table {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-lg) !important;
+    overflow: hidden !important;
+    box-shadow: none !important;
+}
+
+.list-row-head,
+.table thead th {
+    background: #f8fafc !important;
+    color: #5a67d8 !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.03em !important;
+}
+
+.list-row:hover,
+.table tbody tr:hover td {
+    background: var(--bg-hover) !important;
+}
+
+/* Badges */
+.indicator,
+.indicator-pill {
+    border-radius: 999px !important;
+    padding: 4px 12px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+}
+
+/* =========================================================
+   FILTER PANEL
+   ========================================================= */
+.list-sidebar,
+.list-filters-wrapper {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-lg) !important;
+    padding: 20px !important;
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(102, 126, 234, 0.3);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(102, 126, 234, 0.5);
+}
+
+/* =========================================================
+   MOBILE RESPONSIVE
+   ========================================================= */
+@media (max-width: 991px) {
+    .layout-side-section {
+        width: 100% !important;
+        min-width: unset !important;
+    }
+    .layout-main-section {
+        padding: 16px !important;
+    }
+}

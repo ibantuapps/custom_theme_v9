@@ -1,0 +1,392 @@
+/* ============
+   VANILLA ERP — Custom Theme v4.2
+   BIRU UNGU - SIDEBAR FIXED ✅
+   ============ */
+
+/* ============
+VARIABLES - BIRU UNGU
+   ============ */
+:root {
+  /* Brand */
+  --brand:          linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --brand-dark:     linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+  --brand-bg:       rgba(102, 126, 234, 0.12);
+  --brand-text:     #5a67d8;
+  
+  /* Sidebar */
+  --sb-width:       230px;
+  --sb-bg:          #ffffff;
+  --sb-border:      #ebebed;
+  --sb-text:        #3d3f4a;
+  --sb-muted:       #a0a4b0;
+  --sb-hover:       rgba(102, 126, 234, 0.08);
+  --sb-active-bg:   rgba(91,80,232,.08);
+  --sb-active-text: #4740c4;
+  
+  /* Layout */
+  --bg-page:        #f0f1f4;
+  --bg-card:        #ffffff;
+  --border:         #e0e0e4;
+  --border-faint:   #f0f0f2;
+  
+  /* Text */
+  --tx-1:           #111827;
+  --tx-2:           #5c6070;
+  --tx-3:           #9ca3af;
+  
+  /* Status */
+  --c-green-bg: rgba(34,197,94,0.1); --c-green-tx: #059669;
+  --c-blue-bg:  rgba(59,130,246,0.15);--c-blue-tx:  #2563eb;
+  --c-red-bg:   rgba(239,68,68,0.12); --c-red-tx:   #dc2626;
+  --c-yel-bg:   rgba(251,191,36,0.15); --c-yel-tx:   #d97706;
+  --c-gray-bg:  rgba(148,163,184,0.12);--c-gray-tx:  #64748b;
+  
+  /* Shape */
+  --r-sm:   6px; --r-md: 8px; --r-lg: 12px; --r-pill: 999px;
+  
+  /* Shadow */
+  --sh-xs:    0 1px 2px rgba(0,0,0,.05);
+  --sh-card:  0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --sh-hover: 0 4px 14px rgba(0,0,0,.09);
+  --sh-drop:  0 8px 24px rgba(0,0,0,.12), 0 2px 8px rgba(0,0,0,.08);
+}
+
+/* Global */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+html, body {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 14px !important;
+  background: var(--bg-page) !important;
+  color: var(--tx-1) !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+/* Navbar */
+.navbar {
+  background: #fff !important;
+  border-bottom: 1px solid var(--border) !important;
+  box-shadow: var(--sh-xs) !important;
+  height: 52px !important;
+}
+
+/* ============
+SIDEBAR - FIXED ✅ COLLAPSE + NORMAL ICON SIZE
+   ============ */
+
+/* Wrapper - FIXED */
+.layout-side-section {
+  width: var(--sb-width) !important;
+  min-width: var(--sb-width) !important;
+  background: var(--sb-bg) !important;
+  border-right: 1px solid var(--sb-border) !important;
+  padding: 8px 8px 24px !important;
+  min-height: calc(100vh - 52px) !important;
+  overflow: visible !important;
+}
+
+.desk-sidebar, .standard-sidebar-section {
+  overflow: visible !important;
+}
+
+/* ✅ COLLAPSE/EXPAND BUTTON (Section Label) */
+.standard-sidebar-label {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  width: 100% !important;
+  padding: 12px 10px 5px !important;
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.09em !important;
+  text-transform: uppercase !important;
+  color: var(--sb-muted) !important;
+  transition: color .15s !important;
+}
+
+.standard-sidebar-label:hover {
+  color: var(--brand-text) !important;
+}
+
+.standard-sidebar-label svg {
+  width: 14px !important;  /* NORMAL SIZE */
+  height: 14px !important;
+  color: var(--sb-muted) !important;
+  fill: var(--sb-muted) !important;
+  transition: transform .2s ease !important;
+}
+
+/* Item Row - NORMAL SIZE */
+.desk-sidebar-item.standard-sidebar-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  border-radius: var(--r-md) !important;
+  padding: 7px 10px !important;
+  margin-bottom: 1px !important;
+  cursor: pointer !important;
+  transition: background .13s ease !important;
+  overflow: visible !important;
+}
+
+/* ICON - NORMAL SIZE 16px */
+.desk-sidebar-item .sidebar-item-icon {
+  flex-shrink: 0 !important;
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.desk-sidebar-item .sidebar-item-icon svg,
+.desk-sidebar-item .sidebar-item-icon use {
+  width: 16px !important;  /* NORMAL SIZE */
+  height: 16px !important;
+  color: var(--sb-muted) !important;
+  fill: var(--sb-muted) !important;
+  transition: all .13s !important;
+}
+
+/* Label */
+.desk-sidebar-item .sidebar-item-label {
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+  color: var(--sb-text) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* HOVER */
+.desk-sidebar-item:hover {
+  background: var(--sb-hover) !important;
+}
+
+.desk-sidebar-item:hover .sidebar-item-label {
+  color: var(--tx-1) !important;
+}
+
+.desk-sidebar-item:hover .sidebar-item-icon svg {
+  color: var(--brand-text) !important;
+  fill: var(--brand-text) !important;
+}
+
+/* ACTIVE */
+.desk-sidebar-item.selected {
+  background: var(--sb-active-bg) !important;
+}
+
+.desk-sidebar-item.selected .sidebar-item-label {
+  color: var(--sb-active-text) !important;
+  font-weight: 600 !important;
+}
+
+.desk-sidebar-item.selected .sidebar-item-icon svg {
+  color: var(--brand-text) !important;
+  fill: var(--brand-text) !important;
+}
+
+/* ============
+SIDEBAR CONTROLS - EDIT MODE ONLY ✅
+   ============ */
+
+/* ALL CONTROLS HIDDEN BY DEFAULT */
+.sidebar-item-control {
+  display: flex !important;
+  align-items: center !important;
+  gap: 2px !important;
+  flex-shrink: 0 !important;
+  margin-left: auto !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity .15s, visibility .15s !important;
+}
+
+/* ✅ EDIT MODE = SHOW (class .show-control) */
+.desk-sidebar.show-control .sidebar-item-control,
+.standard-sidebar-section.show-control .sidebar-item-control {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* ✅ CHEVRON SELALU VISIBLE */
+.sidebar-item-control .drop-icon {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* BUTTONS - NORMAL SIZE */
+.sidebar-item-control .btn,
+.sidebar-item-control .drag-handle,
+.sidebar-item-control .setting-btn {
+  width: 24px !important;
+  height: 24px !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: var(--r-sm) !important;
+  background: transparent !important;
+  color: var(--tx-3) !important;
+  cursor: pointer !important;
+  transition: all .12s !important;
+  margin: 0 1px !important;
+}
+
+.sidebar-item-control .btn:hover,
+.sidebar-item-control .drag-handle:hover,
+.sidebar-item-control .setting-btn:hover {
+  background: rgba(102,126,234,0.12) !important;
+  color: var(--brand-text) !important;
+}
+
+/* ICON SIZE NORMAL */
+.sidebar-item-control svg {
+  width: 16px !important;  /* NORMAL SIZE */
+  height: 16px !important;
+}
+
+/* Dropdown */
+.dropdown-list {
+  position: absolute !important;
+  left: 100% !important;
+  top: 0 !important;
+  margin-left: 6px !important;
+  background: #fff !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--r-lg) !important;
+  box-shadow: var(--sh-drop) !important;
+  padding: 6px !important;
+  min-width: 160px !important;
+  z-index: 99999 !important;
+}
+
+.dropdown-list .dropdown-item {
+  padding: 8px 10px !important;
+  border-radius: var(--r-sm) !important;
+  cursor: pointer !important;
+  font-size: 13px !important;
+  transition: background .12s !important;
+}
+
+.dropdown-list .dropdown-item:hover {
+  background: var(--sb-hover) !important;
+}
+
+/* Submenu & Hidden */
+.sidebar-child-item .desk-sidebar-item .sidebar-item-label {
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  color: var(--tx-2) !important;
+}
+
+.sidebar-item-container[item-is-hidden="1"] .desk-sidebar-item {
+  opacity: 0.45 !important;
+}
+
+.sidebar-item-container[item-is-hidden="1"] .desk-sidebar-item:hover {
+  opacity: 0.80 !important;
+}
+
+/* ============
+PAGE HEADER & WORKSPACE
+   ============ */
+.page-head {
+  background: #fff !important;
+  border-bottom: 1px solid var(--border) !important;
+  padding: 12px 20px !important;
+}
+
+.page-title {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: var(--tx-1) !important;
+}
+
+.layout-main-section {
+  padding: 20px 24px !important;
+  background: transparent !important;
+}
+
+.widget, .workspace-widget {
+  background: var(--bg-card) !important;
+  border: 1.5px solid var(--border) !important;
+  border-radius: var(--r-lg) !important;
+  box-shadow: var(--sh-card) !important;
+  padding: 18px 20px !important;
+  transition: all .18s !important;
+}
+
+.widget:hover {
+  border-color: rgba(102,126,234,0.3) !important;
+  box-shadow: var(--sh-hover) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ============
+LIST VIEW & FORM
+   ============ */
+.list-main-section .result {
+  background: var(--bg-card) !important;
+  border: 1.5px solid var(--border) !important;
+  border-radius: var(--r-lg) !important;
+  box-shadow: var(--sh-card) !important;
+}
+
+.form-control {
+  border: 1px solid var(--border) !important;
+  border-radius: var(--r-md) !important;
+  padding: 9px 12px !important;
+  font-size: 13.5px !important;
+  transition: border-color .15s !important;
+}
+
+.form-control:focus {
+  border-color: var(--brand-text) !important;
+  box-shadow: 0 0 0 3px var(--brand-bg) !important;
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  border: none !important;
+  border-radius: var(--r-md) !important;
+  font-weight: 600 !important;
+  box-shadow: 0 1px 3px rgba(102,126,234,.30) !important;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%) !important;
+}
+
+/* Table */
+.table {
+  background: var(--bg-card) !important;
+  border: 1.5px solid var(--border) !important;
+  border-radius: var(--r-lg) !important;
+  box-shadow: var(--sh-card) !important;
+}
+
+.table thead th {
+  background: #fafafa !important;
+  color: var(--brand-text) !important;
+  font-weight: 700 !important;
+}
+
+/* Status Badges */
+.indicator.green { background: var(--c-green-bg) !important; color: var(--c-green-tx) !important; }
+.indicator.blue  { background: var(--c-blue-bg) !important; color: var(--c-blue-tx) !important; }
+.indicator.red   { background: var(--c-red-bg) !important; color: var(--c-red-tx) !important; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-thumb { 
+  background: #d0d0d5; 
+  border-radius: 6px; 
+}
+::-webkit-scrollbar-thumb:hover { 
+  background: rgba(102,126,234,0.6); 
+}
+
+/* Mobile */
+@media (max-width: 991px) {
+  .layout-side-section { width: 100% !important; }
+}

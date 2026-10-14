@@ -1,0 +1,274 @@
+/* ============================================================================
+   VANILLA ERP — CUSTOM THEME v5.0 FINAL (ULTRA PRECISION OVERRIDE)
+   Target: demo-theme.i-erpx.co
+   Logic: Fully Hidden Controls outside Edit Mode + Massive Sidebar Icons
+   ============================================================================ */
+
+/* 00. GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+/* ============================================================
+   01. VARIABLES
+   ============================================================ */
+:root {
+  /* Brand Colors */
+  --brand: #dc3545;
+  --brand-dark: #b91c2c;
+  --brand-bg: rgba(220, 53, 69, .07);
+  --brand-text: #b91c2c;
+
+  /* Sidebar Deep Override */
+  --sb-width: 260px; /* Lebar sesuai permintaan agar icon lega */
+  --sb-bg: #ffffff;
+  --sb-border: #ebebed;
+  --sb-text: #3d3f4a;
+  --sb-muted: #a0a4b0;
+  --sb-hover: #f4f4f7;
+  --sb-active-bg: rgba(220, 53, 69, .07);
+  --sb-active-text: #b91c2c;
+
+  /* Layout */
+  --bg-page: #f0f1f4;
+  --bg-card: #ffffff;
+  --border: #e0e0e4;
+  --border-faint: #f0f0f2;
+
+  /* Text Colors */
+  --tx-1: #111827;
+  --tx-2: #5c6070;
+  --tx-3: #9ca3af;
+
+  /* Global Radius & Shadow */
+  --r-sm: 6px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-pill: 999px;
+  --sh-xs: 0 1px 2px rgba(0,0,0,.05);
+  --sh-card: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --sh-hover: 0 4px 14px rgba(0,0,0,.09);
+  --sh-drop: 0 8px 24px rgba(0,0,0,.12), 0 2px 8px rgba(0,0,0,.08);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+}
+
+/* ============================================================
+   02. GLOBAL RESET & TYPOGRAPHY
+   ============================================================ */
+html, body {
+  font-family: 'Cairo', 'Inter', sans-serif !important;
+  font-size: 14px !important;
+  background: var(--bg-page) !important;
+  color: var(--tx-1) !important;
+  -webkit-font-smoothing: antialiased !important;
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar Style */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d0d0d5; border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: #a0a0a8; }
+
+/* ============================================================
+   03. DESK SIDEBAR (ULTRA FIX)
+   ============================================================ */
+
+/* Wrapper */
+.layout-side-section {
+  width: var(--sb-width) !important;
+  min-width: var(--sb-width) !important;
+  background: var(--sb-bg) !important;
+  border-right: 1px solid var(--sb-border) !important;
+  padding: 12px 10px !important;
+  min-height: calc(100vh - 52px) !important;
+  overflow: visible !important; /* Agar dropdown menu tidak terpotong */
+}
+
+/* --- SIDEBAR ITEM ICON (DI PERBESAR PLEK KETIPLEK) --- */
+.desk-sidebar-item .sidebar-item-icon {
+  width: 24px !important; /* Box pembungkus icon */
+  height: 24px !important;
+  margin-right: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.desk-sidebar-item .sidebar-item-icon svg,
+.desk-sidebar-item .sidebar-item-icon use {
+  width: 22px !important; /* Ukuran icon murni */
+  height: 22px !important;
+  color: var(--sb-muted) !important;
+  fill: var(--sb-muted) !important;
+  stroke-width: 1.5px !important;
+}
+
+/* Active Icon Color */
+.desk-sidebar-item.selected .sidebar-item-icon svg {
+  color: var(--brand) !important;
+  fill: var(--brand) !important;
+}
+
+/* --- LOGIKA HIDE BUTTONS (ONLY SHOW IN EDIT MODE) --- */
+/* Sembunyikan Drag handle (⠿), Settings (···), dan Dropdown (▾) secara total */
+.sidebar-item-control {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+/* Tampilkan HANYA jika .standard-sidebar-section memiliki class .show-control */
+.standard-sidebar-section.show-control .sidebar-item-control {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* --- SIDEBAR ITEM ROW --- */
+.desk-sidebar-item.standard-sidebar-item {
+  display: flex !important;
+  align-items: center !important;
+  border-radius: var(--r-md) !important;
+  padding: 10px 12px !important;
+  margin-bottom: 2px !important;
+  transition: all .15s ease !important;
+  text-decoration: none !important;
+}
+
+.desk-sidebar-item.standard-sidebar-item:hover {
+  background: var(--sb-hover) !important;
+  transform: translateX(3px);
+}
+
+.desk-sidebar-item.standard-sidebar-item.selected {
+  background: var(--sb-active-bg) !important;
+}
+
+.desk-sidebar-item .sidebar-item-label {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: var(--sb-text) !important;
+}
+
+.desk-sidebar-item.selected .sidebar-item-label {
+  color: var(--sb-active-text) !important;
+  font-weight: 700 !important;
+}
+
+/* Section Labels (PUBLIC / PERSONAL) */
+.standard-sidebar-label {
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  color: var(--sb-muted) !important;
+  padding: 18px 12px 8px !important;
+}
+
+/* ============================================================
+   04. CONTENT AREA & CARDS (PALMER PRODUCTIONS STYLE)
+   ============================================================ */
+.layout-main-section.frappe-card, 
+.form-section,
+.widget {
+  background: #ffffff !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--r-lg) !important;
+  box-shadow: var(--sh-card) !important;
+  padding: 24px !important;
+  margin-bottom: 24px !important;
+}
+
+/* Form Section Header (The Grey Strip) */
+.section-head, .form-section .section-head {
+  background: #f8fafc !important;
+  color: var(--tx-2) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  margin: -24px -24px 20px -24px !important; /* Full width inside card */
+  padding: 12px 24px !important;
+  border-bottom: 1px solid var(--border) !important;
+  border-radius: 12px 12px 0 0 !important;
+}
+
+/* ============================================================
+   05. FORM CONTROLS & INPUTS
+   ============================================================ */
+.form-control, input.form-control, textarea.form-control, select.form-control {
+  border: 1px solid var(--border) !important;
+  border-radius: var(--r-md) !important;
+  background: #ffffff !important;
+  padding: 10px 14px !important;
+  height: 42px !important;
+  font-family: 'Inter', sans-serif !important;
+  transition: all .2s !important;
+}
+
+.form-control:focus {
+  border-color: var(--brand) !important;
+  box-shadow: 0 0 0 4px rgba(220, 53, 69, 0.08) !important;
+}
+
+.control-label {
+  font-weight: 600 !important;
+  color: var(--tx-2) !important;
+  font-size: 12px !important;
+  margin-bottom: 6px !important;
+}
+
+/* ============================================================
+   06. LIST VIEW & TABLES
+   ============================================================ */
+.list-row-head {
+  background: #f9fafb !important;
+  border-bottom: 2px solid var(--border) !important;
+  height: 45px !important;
+}
+
+.list-row {
+  height: 50px !important;
+  border-bottom: 1px solid var(--border-faint) !important;
+}
+
+.list-row:hover { background: #fffcfc !important; }
+
+/* Status Badges */
+.indicator-pill {
+  border: none !important;
+  font-weight: 700 !important;
+  padding: 4px 10px !important;
+  font-size: 11px !important;
+}
+
+.indicator-pill.blue { background: var(--c-blue-bg) !important; color: var(--c-blue-tx) !important; }
+.indicator-pill.green { background: var(--c-green-bg) !important; color: var(--c-green-tx) !important; }
+.indicator-pill.red { background: var(--c-red-bg) !important; color: var(--c-red-tx) !important; }
+
+/* ============================================================
+   07. NAVBAR
+   ============================================================ */
+.navbar {
+  height: 61px !important;
+  box-shadow: var(--sh-xs) !important;
+  padding: 0 24px !important;
+}
+
+.navbar .search-bar input {
+  border-radius: 20px !important;
+  background: var(--gray-100) !important;
+  height: 34px !important;
+}
+
+/* ============================================================
+   08. UTILITIES & ANIMATIONS
+   ============================================================ */
+.layout-main-section { animation: fadeInUp 0.5s ease; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}

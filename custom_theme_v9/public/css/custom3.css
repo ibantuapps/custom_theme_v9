@@ -1,0 +1,250 @@
+/* =========================================================
+   ERPNext Clean Modern Theme (Final)
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* =========================================================
+   ROOT SYSTEM
+   ========================================================= */
+:root{
+    --primary:#dc3545;
+    --primary-soft:#fff1f2;
+    --primary-hover:#c82333;
+
+    --bg-main:#f6f8fb;
+    --bg-card:#ffffff;
+    --bg-hover:#f8fafc;
+
+    --text-main:#1f2937;
+    --text-soft:#6b7280;
+
+    --border:#e5e7eb;
+
+    --radius:12px;
+    --radius-lg:16px;
+
+    --shadow-sm:0 2px 6px rgba(0,0,0,0.04);
+    --shadow-md:0 6px 18px rgba(0,0,0,0.06);
+}
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+html,body{
+    font-family:'Inter',sans-serif !important;
+    background:var(--bg-main) !important;
+    color:var(--text-main) !important;
+}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+.navbar{
+    background:#fff !important;
+    border-bottom:1px solid var(--border) !important;
+    box-shadow:0 1px 4px rgba(0,0,0,0.03);
+    height:60px;
+}
+
+/* =========================================================
+   SIDEBAR (KEEP DEFAULT STRUCTURE)
+   ========================================================= */
+.layout-side-section{
+    width:250px !important;
+    min-width:250px !important;
+    background:#fff;
+    border-right:1px solid var(--border);
+    padding:14px 10px;
+}
+
+/* menu item */
+.standard-sidebar-item{
+    border-radius:10px;
+    padding:8px 10px;
+    transition:all .2s ease;
+}
+
+/* hover */
+.standard-sidebar-item:hover{
+    background:var(--bg-hover);
+}
+
+/* active */
+.standard-sidebar-item.selected{
+    background:var(--primary-soft);
+    color:var(--primary);
+    font-weight:600;
+}
+
+/* text */
+.sidebar-item-label{
+    font-size:14px;
+}
+
+/* icon */
+.sidebar-item-icon svg{
+    width:18px;
+    height:18px;
+}
+
+/* =========================================================
+   MAIN CONTENT FIX (FULL WIDTH)
+   ========================================================= */
+.layout-main-section-wrapper,
+.workspace-wrapper,
+.page-body{
+    max-width:100% !important;
+    width:100% !important;
+}
+
+/* REMOVE CENTER LOOK (INI YANG ERROR DI KAMU) */
+.layout-main-section{
+    background:transparent !important;
+    padding:24px 28px !important;
+}
+
+/* =========================================================
+   CARD SYSTEM (INI YANG KAMU MAU)
+   ========================================================= */
+.widget,
+.widget-group,
+.workspace-widget,
+.links-widget-box{
+
+    background:var(--bg-card) !important;
+    border-radius:var(--radius-lg) !important;
+    border:1px solid var(--border) !important;
+
+    box-shadow:none !important;
+
+    padding:18px 20px !important;
+
+    transition:all .2s ease;
+}
+
+/* hover clean */
+.widget:hover,
+.workspace-widget:hover{
+    border-color:#d1d5db !important;
+    transform:translateY(-2px);
+    box-shadow:var(--shadow-sm);
+}
+
+/* =========================================================
+   SHORTCUT CARD (ATAS)
+   ========================================================= */
+.shortcut-widget-box{
+    background:#fff !important;
+    border:1px solid var(--border) !important;
+    border-radius:12px !important;
+    padding:14px 16px !important;
+    box-shadow:none !important;
+}
+
+.shortcut-widget-box:hover{
+    background:var(--bg-hover) !important;
+    transform:none !important;
+}
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+.widget-head,
+.workspace-section-head{
+    font-size:15px;
+    font-weight:600;
+    margin-bottom:14px;
+}
+
+/* =========================================================
+   LINKS (DALAM CARD)
+   ========================================================= */
+.widget a{
+    display:block;
+    font-size:14px;
+    color:var(--text-soft);
+    padding:6px 0;
+    transition:all .2s;
+}
+
+.widget a:hover{
+    color:var(--primary);
+    padding-left:4px;
+}
+
+/* =========================================================
+   FORM (INI YANG KAMU BELUM RAPIIIN)
+   ========================================================= */
+.form-control{
+    border-radius:10px !important;
+    border:1px solid var(--border) !important;
+    background:#fff !important;
+    padding:10px 12px !important;
+    font-size:14px !important;
+    box-shadow:none !important;
+}
+
+/* focus modern */
+.form-control:focus{
+    border-color:var(--primary) !important;
+    box-shadow:0 0 0 3px rgba(220,53,69,0.08) !important;
+}
+
+/* label */
+.control-label,
+.form-label{
+    font-size:13px;
+    font-weight:500;
+    color:var(--text-soft);
+}
+
+/* field spacing */
+.form-group{
+    margin-bottom:16px !important;
+}
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+.btn-primary{
+    background:var(--primary) !important;
+    border:none !important;
+    border-radius:10px !important;
+    padding:8px 14px !important;
+    font-weight:500;
+    box-shadow:none !important;
+}
+
+.btn-primary:hover{
+    background:var(--primary-hover) !important;
+}
+
+/* secondary */
+.btn-default,
+.btn-secondary{
+    border-radius:10px !important;
+}
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+.table{
+    background:#fff !important;
+    border:1px solid var(--border);
+    border-radius:12px;
+    overflow:hidden;
+}
+
+.table thead{
+    background:#f9fafb !important;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+@media(max-width:991px){
+    .layout-side-section{
+        width:100% !important;
+    }
+}

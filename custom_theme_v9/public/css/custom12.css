@@ -1,0 +1,917 @@
+/* ============================================================
+   VANILLA ERP — Custom Theme v4.0
+   Based on exact HTML structure inspection
+   ============================================================
+
+   CONTENTS
+   --------
+   01. Variables
+   02. Global & Typography
+   03. Navbar
+   04. Desk Sidebar (exact selectors from HTML)
+       ├─ Wrapper & overflow fix
+       ├─ Section label (PUBLIC / Personal)
+       ├─ Item row
+       ├─ Hover & Active state
+       ├─ sidebar-item-control (drag, setting, chevron)
+       ├─ dropdown-list (Edit/Duplicate/Hide/Delete)
+       └─ Hidden / unhide workspaces
+   05. Page Header
+   06. Workspace & Cards
+   07. List View
+   08. Filter Panel
+   09. Form
+   10. Buttons
+   11. Table
+   12. Scrollbar
+   13. Mobile
+   ============================================================ */
+
+
+/* ============================================================
+   01. VARIABLES
+   ============================================================ */
+:root {
+  /* Brand */
+  --brand:          #dc3545;
+  --brand-dark:     #b91c2c;
+  --brand-bg:       rgba(220,53,69,.07);
+  --brand-text:     #b91c2c;
+
+  /* Sidebar */
+  --sb-width:       230px;
+  --sb-bg:          #ffffff;
+  --sb-border:      #ebebed;
+  --sb-text:        #3d3f4a;
+  --sb-muted:       #a0a4b0;
+  --sb-hover:       #f4f4f7;
+  --sb-active-bg:   rgba(220,53,69,.07);
+  --sb-active-text: #b91c2c;
+
+  /* Layout */
+  --bg-page:        #f0f1f4;
+  --bg-card:        #ffffff;
+  --border:         #e0e0e4;
+  --border-faint:   #f0f0f2;
+
+  /* Text */
+  --tx-1:           #111827;
+  --tx-2:           #5c6070;
+  --tx-3:           #9ca3af;
+
+  /* Status */
+  --c-green-bg: #d1fae5; --c-green-tx: #065f46;
+  --c-blue-bg:  #dbeafe; --c-blue-tx:  #1e40af;
+  --c-red-bg:   #fee2e2; --c-red-tx:   #991b1b;
+  --c-yel-bg:   #fef3c7; --c-yel-tx:   #92400e;
+  --c-gray-bg:  #f3f4f6; --c-gray-tx:  #4b5563;
+
+  /* Shape */
+  --r-sm:   6px;
+  --r-md:   8px;
+  --r-lg:   12px;
+  --r-pill: 999px;
+
+  /* Shadow */
+  --sh-xs:   0 1px 2px rgba(0,0,0,.05);
+  --sh-card: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --sh-hover:0 4px 14px rgba(0,0,0,.09);
+  --sh-drop: 0 8px 24px rgba(0,0,0,.12), 0 2px 8px rgba(0,0,0,.08);
+}
+
+
+/* ============================================================
+   02. GLOBAL & TYPOGRAPHY
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+html, body {
+  font-family:            'Inter', sans-serif !important;
+  font-size:              14px !important;
+  background:             var(--bg-page) !important;
+  color:                  var(--tx-1) !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+
+/* ============================================================
+   03. NAVBAR
+   ============================================================ */
+.navbar {
+  background:    #fff !important;
+  border-bottom: 1px solid var(--border) !important;
+  box-shadow:    var(--sh-xs) !important;
+  height:        52px !important;
+}
+
+.navbar .breadcrumb,
+.breadcrumb-container .breadcrumb {
+  font-size: 13px !important;
+  color:     var(--tx-2) !important;
+}
+
+.breadcrumb-container .breadcrumb li.active {
+  color:       var(--tx-1) !important;
+  font-weight: 600 !important;
+}
+
+
+/* ============================================================
+   04. DESK SIDEBAR
+   ============================================================ */
+
+/* ── Wrapper — KUNCI: overflow visible agar dropdown tidak terpotong ── */
+.layout-side-section {
+  width:      var(--sb-width) !important;
+  min-width:  var(--sb-width) !important;
+  background: var(--sb-bg) !important;
+  border-right: 1px solid var(--sb-border) !important;
+  padding:    8px 8px 24px !important;
+  min-height: calc(100vh - 52px) !important;
+  overflow:   visible !important;   /* JANGAN hidden, dropdown akan terpotong */
+}
+
+.desk-sidebar {
+  overflow: visible !important;
+  width:    100% !important;
+}
+
+/* Tiap section wrapper */
+.standard-sidebar-section {
+  overflow: visible !important;
+  position: relative !important;
+}
+
+/* ── Section toggle button (PUBLIC / Personal) ── */
+.standard-sidebar-label {
+  display:        flex !important;
+  align-items:    center !important;
+  gap:            6px !important;
+  width:          100% !important;
+  padding:        12px 10px 5px !important;
+  background:     none !important;
+  border:         none !important;
+  cursor:         pointer !important;
+  font-size:      10px !important;
+  font-weight:    700 !important;
+  letter-spacing: 0.09em !important;
+  text-transform: uppercase !important;
+  color:          var(--sb-muted) !important;
+}
+
+.standard-sidebar-label .section-title {
+  color: var(--sb-muted) !important;
+}
+
+.standard-sidebar-label svg {
+  width:      12px !important;
+  height:     12px !important;
+  color:      var(--sb-muted) !important;
+  fill:       var(--sb-muted) !important;
+  transition: transform .2s ease !important;
+  flex-shrink: 0 !important;
+}
+
+/* ── Item container — overflow visible agar dropdown keluar ── */
+.sidebar-item-container {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+/* ── Item row ── */
+.desk-sidebar-item.standard-sidebar-item {
+  display:       flex !important;
+  align-items:   center !important;
+  gap:           8px !important;
+  border-radius: var(--r-md) !important;
+  padding:       7px 10px !important;
+  margin-bottom: 1px !important;
+  position:      relative !important;
+  cursor:        pointer !important;
+  transition:    background .13s ease !important;
+  overflow:      visible !important;
+}
+
+/* Link anchor */
+.desk-sidebar-item .item-anchor {
+  display:         flex !important;
+  align-items:     center !important;
+  gap:             8px !important;
+  flex:            1 !important;
+  text-decoration: none !important;
+  min-width:       0 !important;
+  overflow:        hidden !important;
+}
+
+/* Icon */
+.desk-sidebar-item .sidebar-item-icon {
+  flex-shrink: 0 !important;
+  width:       18px !important;
+  height:      18px !important;
+  display:     flex !important;
+  align-items: center !important;
+}
+
+.desk-sidebar-item .sidebar-item-icon svg,
+.desk-sidebar-item .sidebar-item-icon use {
+  width:      16px !important;
+  height:     16px !important;
+  color:      var(--sb-muted) !important;
+  fill:       var(--sb-muted) !important;
+  transition: color .13s, fill .13s !important;
+}
+
+/* Label */
+.desk-sidebar-item .sidebar-item-label {
+  font-size:     13.5px !important;
+  font-weight:   500 !important;
+  color:         var(--sb-text) !important;
+  white-space:   nowrap !important;
+  overflow:      hidden !important;
+  text-overflow: ellipsis !important;
+  transition:    color .13s !important;
+}
+
+/* ── HOVER ── */
+.desk-sidebar-item.standard-sidebar-item:hover {
+  background: var(--sb-hover) !important;
+}
+
+.desk-sidebar-item.standard-sidebar-item:hover .sidebar-item-label {
+  color: var(--tx-1) !important;
+}
+
+.desk-sidebar-item.standard-sidebar-item:hover .sidebar-item-icon svg {
+  color: var(--tx-2) !important;
+  fill:  var(--tx-2) !important;
+}
+
+/* ── ACTIVE / SELECTED ── */
+.desk-sidebar-item.standard-sidebar-item.selected {
+  background: var(--sb-active-bg) !important;
+}
+
+.desk-sidebar-item.standard-sidebar-item.selected .sidebar-item-label {
+  color:       var(--sb-active-text) !important;
+  font-weight: 600 !important;
+}
+
+.desk-sidebar-item.standard-sidebar-item.selected .sidebar-item-icon svg {
+  color: var(--brand) !important;
+  fill:  var(--brand) !important;
+}
+
+/* ── sidebar-item-control (drag ⠿ + setting ··· + chevron ▾) ── */
+.sidebar-item-control {
+  display:     flex !important;
+  align-items: center !important;
+  gap:         2px !important;
+  flex-shrink: 0 !important;
+  margin-left: auto !important;
+  opacity:     0 !important;               /* tersembunyi default */
+  transition:  opacity .15s !important;
+  position:    relative !important;
+  overflow:    visible !important;
+  z-index:     10 !important;
+}
+
+/* Tampil saat hover item */
+.desk-sidebar-item.standard-sidebar-item:hover .sidebar-item-control,
+.desk-sidebar-item.standard-sidebar-item.selected .sidebar-item-control {
+  opacity: 1 !important;
+}
+
+/* Tombol drag & setting */
+.sidebar-item-control .btn,
+.sidebar-item-control .drag-handle,
+.sidebar-item-control .setting-btn,
+.sidebar-item-control .unhide-workspace-btn {
+  display:       inline-flex !important;
+  align-items:   center !important;
+  justify-content: center !important;
+  width:         24px !important;
+  height:        24px !important;
+  padding:       0 !important;
+  border:        none !important;
+  border-radius: var(--r-sm) !important;
+  background:    transparent !important;
+  color:         var(--tx-3) !important;
+  cursor:        pointer !important;
+  transition:    background .12s, color .12s !important;
+}
+
+.sidebar-item-control .btn:hover,
+.sidebar-item-control .drag-handle:hover,
+.sidebar-item-control .setting-btn:hover,
+.sidebar-item-control .unhide-workspace-btn:hover {
+  background: rgba(0,0,0,.07) !important;
+  color:      var(--tx-1) !important;
+}
+
+.sidebar-item-control svg {
+  width:  14px !important;
+  height: 14px !important;
+  color:  inherit !important;
+  fill:   inherit !important;
+}
+
+/* Chevron drop-icon */
+.sidebar-item-control .drop-icon {
+  display:       inline-flex !important;
+  align-items:   center !important;
+  justify-content: center !important;
+  width:         24px !important;
+  height:        24px !important;
+  border:        none !important;
+  border-radius: var(--r-sm) !important;
+  background:    transparent !important;
+  color:         var(--tx-3) !important;
+  cursor:        pointer !important;
+  transition:    background .12s, transform .2s !important;
+}
+
+/* ── DROPDOWN LIST (Edit / Duplicate / Hide / Delete) ── */
+.dropdown-list {
+  position:      absolute !important;
+  left:          100% !important;       /* keluar ke kanan sidebar */
+  top:           0 !important;
+  margin-left:   6px !important;
+  background:    #fff !important;
+  border:        1px solid var(--border) !important;
+  border-radius: var(--r-lg) !important;
+  box-shadow:    var(--sh-drop) !important;
+  padding:       6px !important;
+  min-width:     160px !important;
+  z-index:       99999 !important;
+  overflow:      visible !important;
+}
+
+/* Kalau tidak muat ke kanan, bisa ke bawah */
+.sidebar-item-container:last-child .dropdown-list,
+.sidebar-item-container:nth-last-child(-n+3) .dropdown-list {
+  top:    auto !important;
+  bottom: 0 !important;
+}
+
+.dropdown-list.hidden {
+  display: none !important;
+}
+
+/* Setiap item di dropdown */
+.dropdown-list .dropdown-item {
+  display:       flex !important;
+  align-items:   center !important;
+  gap:           8px !important;
+  padding:       8px 10px !important;
+  border-radius: var(--r-sm) !important;
+  cursor:        pointer !important;
+  transition:    background .12s !important;
+  font-size:     13px !important;
+  font-weight:   500 !important;
+  color:         var(--tx-1) !important;
+  white-space:   nowrap !important;
+}
+
+.dropdown-list .dropdown-item:hover {
+  background: var(--sb-hover) !important;
+}
+
+/* Delete item — merah */
+.dropdown-list .dropdown-item[title="Delete Workspace"] {
+  color: var(--brand) !important;
+}
+
+.dropdown-list .dropdown-item[title="Delete Workspace"]:hover {
+  background: var(--brand-bg) !important;
+}
+
+.dropdown-item .dropdown-item-icon {
+  display:     flex !important;
+  align-items: center !important;
+  flex-shrink: 0 !important;
+}
+
+.dropdown-item .dropdown-item-icon svg {
+  width:  15px !important;
+  height: 15px !important;
+  color:  var(--tx-3) !important;
+  fill:   var(--tx-3) !important;
+}
+
+.dropdown-item[title="Delete Workspace"] .dropdown-item-icon svg {
+  color: var(--brand) !important;
+  fill:  var(--brand) !important;
+}
+
+.dropdown-item .dropdown-item-label {
+  font-size:   13px !important;
+  font-weight: 500 !important;
+  color:       inherit !important;
+}
+
+/* ── Sub-menu (child items) ── */
+.sidebar-child-item.nested-container {
+  margin-left:  8px !important;
+  padding-left: 4px !important;
+  border-left:  2px solid var(--border-faint) !important;
+  overflow:     visible !important;
+}
+
+.sidebar-child-item .desk-sidebar-item .sidebar-item-label {
+  font-size:   13px !important;
+  font-weight: 400 !important;
+  color:       var(--tx-2) !important;
+}
+
+/* ── Hidden workspace items (greyed out) ── */
+.sidebar-item-container[item-is-hidden="1"] .desk-sidebar-item {
+  opacity: 0.45 !important;
+}
+
+.sidebar-item-container[item-is-hidden="1"] .desk-sidebar-item:hover {
+  opacity: 0.80 !important;
+}
+
+
+/* ============================================================
+   05. PAGE HEADER
+   ============================================================ */
+.page-head {
+  background:    #fff !important;
+  border-bottom: 1px solid var(--border) !important;
+  padding:       12px 20px !important;
+}
+
+.page-head .title-area .title-text,
+.page-title {
+  font-size:      18px !important;
+  font-weight:    700 !important;
+  color:          var(--tx-1) !important;
+  letter-spacing: -0.02em !important;
+}
+
+.page-head .page-actions .btn,
+.page-head .standard-actions .btn {
+  font-size:     13px !important;
+  font-weight:   500 !important;
+  border-radius: var(--r-md) !important;
+  height:        34px !important;
+}
+
+
+/* ============================================================
+   06. WORKSPACE & CARDS
+   ============================================================ */
+.layout-main-section-wrapper,
+.workspace-wrapper,
+.page-body {
+  max-width:  100% !important;
+  width:      100% !important;
+  background: var(--bg-page) !important;
+}
+
+.layout-main-section {
+  background: transparent !important;
+  padding:    20px 24px !important;
+}
+
+/* Card / widget */
+.widget,
+.widget-group,
+.workspace-widget,
+.links-widget-box {
+  background:    var(--bg-card) !important;
+  border:        1.5px solid var(--border) !important;
+  border-radius: var(--r-lg) !important;
+  box-shadow:    var(--sh-card) !important;
+  padding:       18px 20px !important;
+  transition:    border-color .18s, box-shadow .18s, transform .18s !important;
+}
+
+.widget:hover,
+.workspace-widget:hover {
+  border-color: #c4c4ca !important;
+  box-shadow:   var(--sh-hover) !important;
+  transform:    translateY(-1px) !important;
+}
+
+/* Shortcut cards */
+.shortcut-widget-box {
+  background:    var(--bg-card) !important;
+  border:        1.5px solid var(--border) !important;
+  border-radius: var(--r-md) !important;
+  padding:       12px 16px !important;
+  font-size:     13.5px !important;
+  font-weight:   500 !important;
+  color:         var(--tx-1) !important;
+  box-shadow:    var(--sh-xs) !important;
+  transition:    background .15s, border-color .15s !important;
+}
+
+.shortcut-widget-box:hover {
+  background:   #fdf9f9 !important;
+  border-color: #f0a0a8 !important;
+}
+
+/* Widget heading */
+.widget-head,
+.workspace-section-head {
+  font-size:      11.5px !important;
+  font-weight:    700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.07em !important;
+  color:          var(--tx-3) !important;
+  margin-bottom:  14px !important;
+  padding-bottom: 10px !important;
+  border-bottom:  1px solid var(--border) !important;
+}
+
+/* Links */
+.widget a,
+.links-widget-box a {
+  display:         block !important;
+  font-size:       13.5px !important;
+  color:           var(--tx-2) !important;
+  padding:         5px 0 !important;
+  text-decoration: none !important;
+  transition:      color .12s, padding-left .12s !important;
+}
+
+.widget a:hover,
+.links-widget-box a:hover {
+  color:        var(--brand) !important;
+  padding-left: 4px !important;
+}
+
+
+/* ============================================================
+   07. LIST VIEW
+   ============================================================ */
+.list-main-section,
+.frappe-list {
+  background: transparent !important;
+  padding:    0 !important;
+}
+
+.list-main-section .result,
+.frappe-list .result {
+  background:    var(--bg-card) !important;
+  border:        1.5px solid var(--border) !important;
+  border-radius: var(--r-lg) !important;
+  overflow:      hidden !important;
+  box-shadow:    var(--sh-card) !important;
+}
+
+/* Column filter bar */
+.list-main-section .list-filters,
+.frappe-list .list-filters {
+  background:    #fafafa !important;
+  border-bottom: 1px solid var(--border) !important;
+  padding:       8px 14px !important;
+  display:       flex !important;
+  gap:           6px !important;
+  flex-wrap:     wrap !important;
+}
+
+.list-filters input,
+.list-filter-field input {
+  border:        1px solid var(--border) !important;
+  border-radius: var(--r-sm) !important;
+  padding:       5px 9px !important;
+  font-size:     12.5px !important;
+  height:        30px !important;
+  background:    #fff !important;
+  font-family:   'Inter', sans-serif !important;
+  box-shadow:    none !important;
+  transition:    border-color .15s !important;
+}
+
+.list-filters input:focus {
+  border-color: var(--brand) !important;
+  outline:      none !important;
+  box-shadow:   0 0 0 3px var(--brand-bg) !important;
+}
+
+/* Header row */
+.list-row-head {
+  background:    #fafafa !important;
+  border-bottom: 1px solid var(--border) !important;
+  padding:       0 14px !important;
+}
+
+.list-row-head .list-row-col {
+  font-size:      11px !important;
+  font-weight:    700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.07em !important;
+  color:          var(--brand) !important;
+  padding:        10px 8px !important;
+}
+
+/* Data rows */
+.list-row {
+  border-bottom: 1px solid var(--border-faint) !important;
+  padding:       0 14px !important;
+  transition:    background .12s !important;
+}
+
+.list-row:last-child  { border-bottom: none !important; }
+.list-row:hover       { background: #fdf9f9 !important; }
+
+.list-row .list-row-col {
+  padding:        10px 8px !important;
+  font-size:      13.5px !important;
+  vertical-align: middle !important;
+}
+
+.list-row .list-row-col a {
+  font-weight:     500 !important;
+  color:           var(--tx-1) !important;
+  text-decoration: none !important;
+}
+
+.list-row .list-row-col a:hover { color: var(--brand) !important; }
+.list-row .text-muted            { font-size: 12px !important; color: var(--tx-3) !important; }
+
+/* Checkbox */
+.list-row input[type="checkbox"],
+.list-row-head input[type="checkbox"] {
+  width:        14px !important;
+  height:       14px !important;
+  accent-color: var(--brand) !important;
+}
+
+/* Badges */
+.indicator,
+.indicator-pill {
+  display:       inline-flex !important;
+  align-items:   center !important;
+  padding:       3px 10px !important;
+  border-radius: var(--r-pill) !important;
+  font-size:     11.5px !important;
+  font-weight:   600 !important;
+  line-height:   1 !important;
+  border:        none !important;
+}
+
+.indicator::before,
+.indicator-pill::before { display: none !important; }
+
+.indicator.green,  .indicator-pill.green  { background:var(--c-green-bg)!important; color:var(--c-green-tx)!important; }
+.indicator.blue,   .indicator-pill.blue   { background:var(--c-blue-bg) !important; color:var(--c-blue-tx) !important; }
+.indicator.red,    .indicator-pill.red    { background:var(--c-red-bg)  !important; color:var(--c-red-tx)  !important; }
+.indicator.yellow, .indicator-pill.yellow { background:var(--c-yel-bg)  !important; color:var(--c-yel-tx)  !important; }
+.indicator.orange, .indicator-pill.orange { background:var(--c-yel-bg)  !important; color:var(--c-yel-tx)  !important; }
+.indicator.grey,   .indicator-pill.grey   { background:var(--c-gray-bg) !important; color:var(--c-gray-tx) !important; }
+.indicator.gray,   .indicator-pill.gray   { background:var(--c-gray-bg) !important; color:var(--c-gray-tx) !important; }
+
+
+/* ============================================================
+   08. FILTER PANEL (kiri list page)
+   ============================================================ */
+.list-sidebar,
+.list-filters-wrapper {
+  background:    var(--bg-card) !important;
+  border:        1.5px solid var(--border) !important;
+  border-radius: var(--r-lg) !important;
+  padding:       14px 12px !important;
+  box-shadow:    var(--sh-card) !important;
+}
+
+.list-sidebar .list-sidebar-label {
+  font-size:      10px !important;
+  font-weight:    700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  color:          var(--tx-3) !important;
+  display:        block !important;
+  margin-bottom:  8px !important;
+  padding:        0 !important;
+}
+
+.list-sidebar select,
+.list-sidebar .form-control {
+  width:         100% !important;
+  border:        1px solid var(--border) !important;
+  border-radius: var(--r-sm) !important;
+  padding:       7px 10px !important;
+  font-size:     12.5px !important;
+  font-family:   'Inter', sans-serif !important;
+  background:    #fff !important;
+  color:         var(--tx-1) !important;
+  box-shadow:    none !important;
+  margin-bottom: 8px !important;
+  display:       block !important;
+  transition:    border-color .15s !important;
+}
+
+.list-sidebar select:focus {
+  border-color: var(--brand) !important;
+  outline:      none !important;
+  box-shadow:   0 0 0 3px var(--brand-bg) !important;
+}
+
+.list-sidebar .edit-filters-btn,
+.list-sidebar .list-link,
+.list-sidebar .show-tags {
+  font-size:       12px !important;
+  font-weight:     600 !important;
+  color:           var(--brand) !important;
+  text-decoration: none !important;
+  display:         block !important;
+  padding:         4px 0 !important;
+}
+
+.list-sidebar hr {
+  border:     none !important;
+  border-top: 1px solid var(--border) !important;
+  margin:     12px 0 !important;
+}
+
+.list-sidebar input[type="text"] {
+  width:         100% !important;
+  border:        1px solid var(--border) !important;
+  border-radius: var(--r-sm) !important;
+  padding:       8px 10px !important;
+  font-size:     12.5px !important;
+  font-family:   'Inter', sans-serif !important;
+  background:    #fff !important;
+  color:         var(--tx-1) !important;
+  box-shadow:    none !important;
+  display:       block !important;
+  transition:    border-color .15s !important;
+}
+
+.list-sidebar input[type="text"]:focus {
+  border-color: var(--brand) !important;
+  outline:      none !important;
+  box-shadow:   0 0 0 3px var(--brand-bg) !important;
+}
+
+.list-sidebar input::placeholder { color: #d1d5db !important; }
+
+.list-sidebar .form-group,
+.list-sidebar .frappe-control {
+  float:         none !important;
+  display:       block !important;
+  width:         100% !important;
+  margin-bottom: 8px !important;
+}
+
+.list-sidebar::after {
+  content: '' !important;
+  display: table !important;
+  clear:   both !important;
+}
+
+
+/* ============================================================
+   09. FORM
+   ============================================================ */
+.form-control,
+input.form-control,
+textarea.form-control,
+select.form-control {
+  border:        1px solid var(--border) !important;
+  border-radius: var(--r-md) !important;
+  background:    #fff !important;
+  padding:       9px 12px !important;
+  font-size:     13.5px !important;
+  font-family:   'Inter', sans-serif !important;
+  color:         var(--tx-1) !important;
+  box-shadow:    none !important;
+  height:        auto !important;
+  transition:    border-color .15s, box-shadow .15s !important;
+}
+
+.form-control:focus {
+  border-color: var(--brand) !important;
+  box-shadow:   0 0 0 3px var(--brand-bg) !important;
+  outline:      none !important;
+}
+
+.control-label,
+.form-label {
+  font-size:      11.5px !important;
+  font-weight:    600 !important;
+  color:          var(--tx-2) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  margin-bottom:  5px !important;
+}
+
+.form-group { margin-bottom: 16px !important; }
+
+.section-head,
+.form-section .section-head {
+  font-size:      12px !important;
+  font-weight:    700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  color:          var(--tx-3) !important;
+  padding:        16px 0 8px !important;
+  border-bottom:  1px solid var(--border) !important;
+  margin-bottom:  14px !important;
+}
+
+.form-layout,
+.frappe-card {
+  background:    var(--bg-card) !important;
+  border:        1.5px solid var(--border) !important;
+  border-radius: var(--r-lg) !important;
+  box-shadow:    var(--sh-card) !important;
+  padding:       20px !important;
+  margin-bottom: 16px !important;
+}
+
+
+/* ============================================================
+   10. BUTTONS
+   ============================================================ */
+.btn-primary {
+  background:    var(--brand) !important;
+  border:        none !important;
+  border-radius: var(--r-md) !important;
+  padding:       7px 16px !important;
+  font-size:     13px !important;
+  font-weight:   600 !important;
+  font-family:   'Inter', sans-serif !important;
+  box-shadow:    0 1px 3px rgba(220,53,69,.30) !important;
+  transition:    background .15s !important;
+  height:        auto !important;
+}
+
+.btn-primary:hover { background: var(--brand-dark) !important; }
+
+.btn-default,
+.btn-secondary {
+  border:        1px solid var(--border) !important;
+  border-radius: var(--r-md) !important;
+  background:    #fff !important;
+  color:         var(--tx-1) !important;
+  font-size:     13px !important;
+  font-weight:   500 !important;
+  font-family:   'Inter', sans-serif !important;
+  transition:    background .12s, border-color .12s !important;
+}
+
+.btn-default:hover,
+.btn-secondary:hover {
+  background:   #f7f7f9 !important;
+  border-color: #c8c8ce !important;
+}
+
+.btn-sm { padding: 4px 10px !important; font-size: 12px !important; }
+
+
+/* ============================================================
+   11. TABLE
+   ============================================================ */
+.table {
+  background:    var(--bg-card) !important;
+  border:        1.5px solid var(--border) !important;
+  border-radius: var(--r-lg) !important;
+  overflow:      hidden !important;
+  box-shadow:    var(--sh-card) !important;
+}
+
+.table thead th {
+  background:     #fafafa !important;
+  font-size:      11px !important;
+  font-weight:    700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  color:          var(--tx-3) !important;
+  border-bottom:  1px solid var(--border) !important;
+  padding:        10px 14px !important;
+}
+
+.table tbody td {
+  font-size:      13.5px !important;
+  padding:        10px 14px !important;
+  border-color:   var(--border-faint) !important;
+  vertical-align: middle !important;
+}
+
+.table tbody tr:hover td { background: #fdf9f9 !important; }
+
+
+/* ============================================================
+   12. SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar           { width: 5px; height: 5px; }
+::-webkit-scrollbar-track     { background: transparent; }
+::-webkit-scrollbar-thumb     { background: #d0d0d5; border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: #a0a0a8; }
+
+
+/* ============================================================
+   13. MOBILE
+   ============================================================ */
+@media (max-width: 991px) {
+  .layout-side-section {
+    width:      100% !important;
+    min-height: unset !important;
+  }
+  .layout-main-section { padding: 12px !important; }
+}

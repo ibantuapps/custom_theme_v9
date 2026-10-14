@@ -1,0 +1,908 @@
+/* ============================================================
+   VANILLA ERP — Modern Clean Theme
+   Filosofi: Default ERPNext feel, lebih rapi & polished
+   Sidebar  : Putih bersih, accent merah subtle
+   Card     : Border jelas, shadow tipis, mudah dibaca
+   ============================================================
+
+   TABLE OF CONTENTS
+   -----------------
+   01. Variables
+   02. Global & Typography
+   03. Navbar
+   04. Main Nav Sidebar
+   05. Page Header
+   06. Workspace & Cards
+   07. List View
+   08. Filter Panel (kiri list page)
+   09. Form
+   10. Buttons
+   11. Table
+   12. Scrollbar
+   13. Mobile
+   ============================================================ */
+
+
+/* ============================================================
+   01. VARIABLES
+   ============================================================ */
+:root {
+  /* Brand */
+  --brand:        #dc3545;
+  --brand-dark:   #b91c2c;
+  --brand-bg:     rgba(220, 53, 69, 0.07);
+  --brand-text:   #b91c2c;
+
+  /* Sidebar */
+  --sb-width:     220px;
+  --sb-bg:        #ffffff;
+  --sb-border:    #ebebed;
+  --sb-text:      #444650;
+  --sb-muted:     #9ca3af;
+  --sb-hover-bg:  #f5f5f7;
+  --sb-active-bg: rgba(220, 53, 69, 0.07);
+
+  /* Layout */
+  --bg-page:      #f0f1f4;
+  --bg-card:      #ffffff;
+  --border:       #e0e0e4;
+  --border-faint: #f0f0f2;
+
+  /* Text */
+  --tx-primary:   #1a1d23;
+  --tx-secondary: #5c6070;
+  --tx-muted:     #9ca3af;
+
+  /* Status */
+  --c-green-bg:   #d1fae5;  --c-green-tx:  #065f46;
+  --c-blue-bg:    #dbeafe;  --c-blue-tx:   #1e40af;
+  --c-red-bg:     #fee2e2;  --c-red-tx:    #991b1b;
+  --c-yellow-bg:  #fef3c7;  --c-yellow-tx: #92400e;
+  --c-gray-bg:    #f3f4f6;  --c-gray-tx:   #4b5563;
+
+  /* Shape */
+  --r-sm:   6px;
+  --r-md:   9px;
+  --r-lg:   12px;
+  --r-pill: 999px;
+
+  /* Shadow */
+  --shadow-xs:   0 1px 2px rgba(0,0,0,0.05);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-hover:0 4px 12px rgba(0,0,0,0.09);
+}
+
+
+/* ============================================================
+   02. GLOBAL & TYPOGRAPHY
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+html, body {
+  font-family:            'Inter', sans-serif !important;
+  font-size:              14px !important;
+  background:             var(--bg-page) !important;
+  color:                  var(--tx-primary) !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+
+/* ============================================================
+   03. NAVBAR
+   ============================================================ */
+.navbar {
+  background:    #ffffff !important;
+  border-bottom: 1px solid var(--border) !important;
+  box-shadow:    var(--shadow-xs) !important;
+  height:        52px !important;
+}
+
+.navbar .breadcrumb,
+.breadcrumb-container .breadcrumb {
+  font-size: 13px !important;
+  color:     var(--tx-secondary) !important;
+}
+
+.breadcrumb-container .breadcrumb li.active {
+  color:       var(--tx-primary) !important;
+  font-weight: 600 !important;
+}
+
+
+/* ============================================================
+   04. MAIN NAV SIDEBAR
+   Hanya target sidebar navigasi utama, bukan workspace sidebar
+   ============================================================ */
+
+/* Wrapper */
+.layout-side-section {
+  width:      var(--sb-width) !important;
+  min-width:  var(--sb-width) !important;
+  background: var(--sb-bg) !important;
+  border-right: 1px solid var(--sb-border) !important;
+  padding:    8px 8px 24px !important;
+  min-height: calc(100vh - 52px) !important;
+}
+
+/* Section label: "PUBLIC", "MAIN" dll */
+.standard-sidebar-section > .sidebar-group-title,
+.standard-sidebar-section > .list-sidebar-label {
+  font-size:      10px !important;
+  font-weight:    700 !important;
+  letter-spacing: 0.09em !important;
+  text-transform: uppercase !important;
+  color:          var(--sb-muted) !important;
+  padding:        14px 10px 4px !important;
+  display:        block !important;
+}
+
+/* Menu item */
+.standard-sidebar-item {
+  display:       flex !important;
+  align-items:   center !important;
+  gap:           9px !important;
+  border-radius: var(--r-md) !important;
+  padding:       7px 10px !important;
+  margin-bottom: 1px !important;
+  position:      relative !important;
+  cursor:        pointer !important;
+  transition:    background 0.13s ease !important;
+}
+
+/* Label */
+.standard-sidebar-item .sidebar-item-label {
+  font-size:   13.5px !important;
+  font-weight: 500 !important;
+  color:       var(--sb-text) !important;
+  transition:  color 0.13s !important;
+}
+
+/* Icon */
+.standard-sidebar-item .sidebar-item-icon svg,
+.standard-sidebar-item .sidebar-item-icon path,
+.standard-sidebar-item .sidebar-item-icon use {
+  color:      var(--sb-muted) !important;
+  fill:       var(--sb-muted) !important;
+  stroke:     var(--sb-muted) !important;
+  width:      16px !important;
+  height:     16px !important;
+  transition: color 0.13s, fill 0.13s !important;
+}
+
+/* Caret */
+.standard-sidebar-item .drop-icon,
+.standard-sidebar-item .caret {
+  color:       var(--sb-muted) !important;
+  margin-left: auto !important;
+  transition:  transform 0.2s ease !important;
+}
+
+.standard-sidebar-item.opened .drop-icon,
+.standard-sidebar-item.opened .caret {
+  transform: rotate(180deg) !important;
+}
+
+/* Hover */
+.standard-sidebar-item:hover {
+  background: var(--sb-hover-bg) !important;
+}
+
+.standard-sidebar-item:hover .sidebar-item-label {
+  color: var(--tx-primary) !important;
+}
+
+.standard-sidebar-item:hover .sidebar-item-icon svg,
+.standard-sidebar-item:hover .sidebar-item-icon path {
+  color:  var(--tx-secondary) !important;
+  fill:   var(--tx-secondary) !important;
+  stroke: var(--tx-secondary) !important;
+}
+
+/* Active / selected */
+.standard-sidebar-item.selected,
+.standard-sidebar-item.active {
+  background: var(--sb-active-bg) !important;
+}
+
+.standard-sidebar-item.selected .sidebar-item-label,
+.standard-sidebar-item.active  .sidebar-item-label {
+  color:       var(--brand-text) !important;
+  font-weight: 600 !important;
+}
+
+.standard-sidebar-item.selected .sidebar-item-icon svg,
+.standard-sidebar-item.selected .sidebar-item-icon path,
+.standard-sidebar-item.active  .sidebar-item-icon svg,
+.standard-sidebar-item.active  .sidebar-item-icon path {
+  color:  var(--brand) !important;
+  fill:   var(--brand) !important;
+  stroke: var(--brand) !important;
+}
+
+/* Sub-menu */
+.sidebar-child-item {
+  margin-left:  6px !important;
+  border-left:  2px solid var(--border-faint) !important;
+  padding-left: 2px !important;
+}
+
+.sidebar-child-item .standard-sidebar-item {
+  padding-left:  16px !important;
+  border-radius: var(--r-sm) !important;
+}
+
+.sidebar-child-item .sidebar-item-label {
+  font-size: 13px !important;
+}
+
+/* Divider */
+.sidebar-divider,
+.layout-side-section hr {
+  border:     none !important;
+  border-top: 1px solid var(--border) !important;
+  margin:     8px 6px !important;
+}
+
+
+/* ============================================================
+   05. PAGE HEADER
+   ============================================================ */
+.page-head {
+  background:    #ffffff !important;
+  border-bottom: 1px solid var(--border) !important;
+  padding:       12px 20px !important;
+}
+
+.page-head .title-area .title-text,
+.page-title {
+  font-size:      18px !important;
+  font-weight:    700 !important;
+  color:          var(--tx-primary) !important;
+  letter-spacing: -0.02em !important;
+}
+
+
+/* ============================================================
+   06. WORKSPACE & CARDS
+   ============================================================ */
+
+.layout-main-section-wrapper,
+.workspace-wrapper,
+.page-body {
+  max-width:  100% !important;
+  width:      100% !important;
+  background: var(--bg-page) !important;
+}
+
+.layout-main-section {
+  background: transparent !important;
+  padding:    20px 24px !important;
+}
+
+/* ── Generic widget / card ── */
+.widget,
+.widget-group,
+.workspace-widget,
+.links-widget-box {
+  background:    var(--bg-card) !important;
+  border:        1.5px solid var(--border) !important;  /* border lebih tegas */
+  border-radius: var(--r-lg) !important;
+  box-shadow:    var(--shadow-card) !important;
+  padding:       18px 20px !important;
+  transition:    border-color 0.18s, box-shadow 0.18s, transform 0.18s !important;
+}
+
+.widget:hover,
+.workspace-widget:hover {
+  border-color: #c8c8ce !important;
+  box-shadow:   var(--shadow-hover) !important;
+  transform:    translateY(-1px) !important;
+}
+
+/* ── Shortcut cards ── */
+.shortcut-widget-box {
+  background:    var(--bg-card) !important;
+  border:        1.5px solid var(--border) !important;
+  border-radius: var(--r-md) !important;
+  padding:       12px 16px !important;
+  font-size:     13.5px !important;
+  font-weight:   500 !important;
+  color:         var(--tx-primary) !important;
+  box-shadow:    var(--shadow-xs) !important;
+  transition:    background 0.15s, border-color 0.15s, box-shadow 0.15s !important;
+}
+
+.shortcut-widget-box:hover {
+  background:   #fdf9f9 !important;
+  border-color: #f0a0a8 !important;
+  box-shadow:   var(--shadow-card) !important;
+}
+
+/* ── Widget title heading ── */
+.widget-head,
+.workspace-section-head {
+  font-size:      12px !important;
+  font-weight:    700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.07em !important;
+  color:          var(--tx-muted) !important;
+  margin-bottom:  14px !important;
+  padding-bottom: 10px !important;
+  border-bottom:  1px solid var(--border) !important;
+}
+
+/* ── Links inside cards ── */
+.widget a,
+.links-widget-box a {
+  display:         block !important;
+  font-size:       13.5px !important;
+  color:           var(--tx-secondary) !important;
+  padding:         5px 0 !important;
+  text-decoration: none !important;
+  transition:      color 0.12s, padding-left 0.12s !important;
+}
+
+.widget a:hover,
+.links-widget-box a:hover {
+  color:        var(--brand) !important;
+  padding-left: 4px !important;
+}
+
+/* ── "Your Shortcuts" / section label ── */
+.workspace-section-label,
+.widget-section-title {
+  font-size:      13px !important;
+  font-weight:    700 !important;
+  color:          var(--tx-primary) !important;
+  margin-bottom:  12px !important;
+  letter-spacing: -0.01em !important;
+}
+
+
+/* ============================================================
+   07. LIST VIEW
+   ============================================================ */
+
+.list-main-section,
+.frappe-list {
+  background: transparent !important;
+  padding:    0 !important;
+}
+
+/* Container */
+.list-main-section .result,
+.frappe-list .result {
+  background:    var(--bg-card) !important;
+  border:        1.5px solid var(--border) !important;
+  border-radius: var(--r-lg) !important;
+  overflow:      hidden !important;
+  box-shadow:    var(--shadow-card) !important;
+}
+
+/* Column filter inputs */
+.list-main-section .list-filters,
+.frappe-list .list-filters {
+  background:    #fafafa !important;
+  border-bottom: 1px solid var(--border) !important;
+  padding:       8px 14px !important;
+  display:       flex !important;
+  gap:           6px !important;
+  flex-wrap:     wrap !important;
+  align-items:   center !important;
+}
+
+.list-filters input,
+.list-filter-field input {
+  border:        1px solid var(--border) !important;
+  border-radius: var(--r-sm) !important;
+  padding:       5px 9px !important;
+  font-size:     12.5px !important;
+  height:        30px !important;
+  background:    #ffffff !important;
+  font-family:   'Inter', sans-serif !important;
+  box-shadow:    none !important;
+  transition:    border-color 0.15s !important;
+}
+
+.list-filters input:focus {
+  border-color: var(--brand) !important;
+  outline:      none !important;
+  box-shadow:   0 0 0 3px var(--brand-bg) !important;
+}
+
+/* Header row */
+.list-row-head,
+.list-row.list-row-head {
+  background:    #fafafa !important;
+  border-bottom: 1px solid var(--border) !important;
+  padding:       0 14px !important;
+}
+
+.list-row-head .list-row-col {
+  font-size:      11px !important;
+  font-weight:    700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.07em !important;
+  color:          var(--brand) !important;
+  padding:        10px 8px !important;
+}
+
+/* Data rows */
+.list-row {
+  border-bottom: 1px solid var(--border-faint) !important;
+  padding:       0 14px !important;
+  transition:    background 0.12s !important;
+}
+
+.list-row:last-child { border-bottom: none !important; }
+.list-row:hover      { background: #fdf9f9 !important; }
+
+.list-row .list-row-col {
+  padding:        10px 8px !important;
+  font-size:      13.5px !important;
+  color:          var(--tx-primary) !important;
+  vertical-align: middle !important;
+}
+
+/* Primary link */
+.list-row .list-row-col a {
+  font-weight:     500 !important;
+  color:           var(--tx-primary) !important;
+  text-decoration: none !important;
+  transition:      color 0.12s !important;
+}
+
+.list-row .list-row-col a:hover {
+  color: var(--brand) !important;
+}
+
+.list-row .text-muted {
+  font-size: 12px !important;
+  color:     var(--tx-muted) !important;
+}
+
+/* Checkbox */
+.list-row input[type="checkbox"],
+.list-row-head input[type="checkbox"] {
+  width:        14px !important;
+  height:       14px !important;
+  accent-color: var(--brand) !important;
+  cursor:       pointer !important;
+}
+
+/* ── Status Badges ── */
+.indicator,
+.indicator-pill {
+  display:       inline-flex !important;
+  align-items:   center !important;
+  padding:       3px 10px !important;
+  border-radius: var(--r-pill) !important;
+  font-size:     11.5px !important;
+  font-weight:   600 !important;
+  line-height:   1 !important;
+  border:        none !important;
+}
+
+.indicator::before,
+.indicator-pill::before { display: none !important; }
+
+.indicator.green,  .indicator-pill.green  { background: var(--c-green-bg)  !important; color: var(--c-green-tx)  !important; }
+.indicator.blue,   .indicator-pill.blue   { background: var(--c-blue-bg)   !important; color: var(--c-blue-tx)   !important; }
+.indicator.red,    .indicator-pill.red    { background: var(--c-red-bg)    !important; color: var(--c-red-tx)    !important; }
+.indicator.yellow, .indicator-pill.yellow { background: var(--c-yellow-bg) !important; color: var(--c-yellow-tx) !important; }
+.indicator.orange, .indicator-pill.orange { background: var(--c-yellow-bg) !important; color: var(--c-yellow-tx) !important; }
+.indicator.grey,   .indicator-pill.grey   { background: var(--c-gray-bg)   !important; color: var(--c-gray-tx)   !important; }
+.indicator.gray,   .indicator-pill.gray   { background: var(--c-gray-bg)   !important; color: var(--c-gray-tx)   !important; }
+
+
+/* ============================================================
+   08. FILTER PANEL (kiri list page)
+   ============================================================ */
+
+.list-sidebar,
+.list-filters-wrapper {
+  background:    var(--bg-card) !important;
+  border:        1.5px solid var(--border) !important;
+  border-radius: var(--r-lg) !important;
+  padding:       14px 12px !important;
+  box-shadow:    var(--shadow-card) !important;
+}
+
+/* Label: "Filter By", "Save Filter" */
+.list-sidebar .list-sidebar-label {
+  font-size:      10px !important;
+  font-weight:    700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  color:          var(--tx-muted) !important;
+  display:        block !important;
+  margin-bottom:  8px !important;
+  padding:        0 !important;
+}
+
+/* Select dropdowns */
+.list-sidebar select,
+.list-sidebar .form-control {
+  width:         100% !important;
+  border:        1px solid var(--border) !important;
+  border-radius: var(--r-sm) !important;
+  padding:       7px 10px !important;
+  font-size:     12.5px !important;
+  font-family:   'Inter', sans-serif !important;
+  background:    #ffffff !important;
+  color:         var(--tx-primary) !important;
+  box-shadow:    none !important;
+  margin-bottom: 8px !important;
+  display:       block !important;
+  transition:    border-color 0.15s !important;
+}
+
+.list-sidebar select:focus {
+  border-color: var(--brand) !important;
+  outline:      none !important;
+  box-shadow:   0 0 0 3px var(--brand-bg) !important;
+}
+
+/* Links */
+.list-sidebar .edit-filters-btn,
+.list-sidebar .list-link,
+.list-sidebar .show-tags,
+.list-sidebar a[data-action="edit_filters"] {
+  font-size:       12px !important;
+  font-weight:     600 !important;
+  color:           var(--brand) !important;
+  text-decoration: none !important;
+  display:         block !important;
+  padding:         4px 0 !important;
+  margin-bottom:   6px !important;
+}
+
+/* Divider */
+.list-sidebar hr {
+  border:     none !important;
+  border-top: 1px solid var(--border) !important;
+  margin:     12px 0 !important;
+}
+
+/* Filter name input */
+.list-sidebar input[type="text"] {
+  width:         100% !important;
+  border:        1px solid var(--border) !important;
+  border-radius: var(--r-sm) !important;
+  padding:       8px 10px !important;
+  font-size:     12.5px !important;
+  font-family:   'Inter', sans-serif !important;
+  background:    #ffffff !important;
+  color:         var(--tx-primary) !important;
+  box-shadow:    none !important;
+  display:       block !important;
+  transition:    border-color 0.15s !important;
+}
+
+.list-sidebar input[type="text"]:focus {
+  border-color: var(--brand) !important;
+  outline:      none !important;
+  box-shadow:   0 0 0 3px var(--brand-bg) !important;
+}
+
+.list-sidebar input::placeholder {
+  color:     #d1d5db !important;
+  font-size: 12.5px !important;
+}
+
+.list-sidebar .form-group,
+.list-sidebar .frappe-control {
+  float:         none !important;
+  display:       block !important;
+  width:         100% !important;
+  margin-bottom: 8px !important;
+}
+
+.list-sidebar::after {
+  content: '' !important;
+  display: table !important;
+  clear:   both !important;
+}
+
+
+/* ============================================================
+   09. FORM
+   ============================================================ */
+
+.form-control,
+input.form-control,
+textarea.form-control,
+select.form-control {
+  border:        1px solid var(--border) !important;
+  border-radius: var(--r-md) !important;
+  background:    #ffffff !important;
+  padding:       9px 12px !important;
+  font-size:     13.5px !important;
+  font-family:   'Inter', sans-serif !important;
+  color:         var(--tx-primary) !important;
+  box-shadow:    none !important;
+  height:        auto !important;
+  transition:    border-color 0.15s, box-shadow 0.15s !important;
+}
+
+.form-control:focus {
+  border-color: var(--brand) !important;
+  box-shadow:   0 0 0 3px var(--brand-bg) !important;
+  outline:      none !important;
+}
+
+.control-label,
+.form-label {
+  font-size:      11.5px !important;
+  font-weight:    600 !important;
+  color:          var(--tx-secondary) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  margin-bottom:  5px !important;
+}
+
+.form-group {
+  margin-bottom: 16px !important;
+}
+
+.section-head,
+.form-section .section-head {
+  font-size:      12px !important;
+  font-weight:    700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  color:          var(--tx-muted) !important;
+  padding:        16px 0 8px !important;
+  border-bottom:  1px solid var(--border) !important;
+  margin-bottom:  14px !important;
+}
+
+.form-layout,
+.frappe-card {
+  background:    var(--bg-card) !important;
+  border:        1.5px solid var(--border) !important;
+  border-radius: var(--r-lg) !important;
+  box-shadow:    var(--shadow-card) !important;
+  padding:       20px !important;
+  margin-bottom: 16px !important;
+}
+
+
+/* ============================================================
+   10. BUTTONS
+   ============================================================ */
+
+.btn-primary {
+  background:    var(--brand) !important;
+  border:        none !important;
+  border-radius: var(--r-md) !important;
+  padding:       7px 16px !important;
+  font-size:     13px !important;
+  font-weight:   600 !important;
+  font-family:   'Inter', sans-serif !important;
+  box-shadow:    0 1px 3px rgba(220, 53, 69, 0.30) !important;
+  transition:    background 0.15s, box-shadow 0.15s !important;
+  height:        auto !important;
+}
+
+.btn-primary:hover {
+  background: var(--brand-dark) !important;
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.35) !important;
+}
+
+.btn-default,
+.btn-secondary {
+  border:        1px solid var(--border) !important;
+  border-radius: var(--r-md) !important;
+  background:    #ffffff !important;
+  color:         var(--tx-primary) !important;
+  font-size:     13px !important;
+  font-weight:   500 !important;
+  font-family:   'Inter', sans-serif !important;
+  transition:    background 0.12s, border-color 0.12s !important;
+}
+
+.btn-default:hover,
+.btn-secondary:hover {
+  background:   #f7f7f9 !important;
+  border-color: #c8c8ce !important;
+}
+
+.btn-sm {
+  padding:   4px 10px !important;
+  font-size: 12px !important;
+}
+
+
+/* ============================================================
+   11. TABLE (inside form)
+   ============================================================ */
+
+.table {
+  background:    var(--bg-card) !important;
+  border:        1.5px solid var(--border) !important;
+  border-radius: var(--r-lg) !important;
+  overflow:      hidden !important;
+  box-shadow:    var(--shadow-card) !important;
+}
+
+.table thead th {
+  background:     #fafafa !important;
+  font-size:      11px !important;
+  font-weight:    700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  color:          var(--tx-muted) !important;
+  border-bottom:  1px solid var(--border) !important;
+  padding:        10px 14px !important;
+}
+
+.table tbody td {
+  font-size:      13.5px !important;
+  padding:        10px 14px !important;
+  border-color:   var(--border-faint) !important;
+  vertical-align: middle !important;
+  color:          var(--tx-primary) !important;
+}
+
+.table tbody tr:hover td {
+  background: #fdf9f9 !important;
+}
+
+
+/* ============================================================
+   12. SCROLLBAR
+   ============================================================ */
+
+::-webkit-scrollbar         { width: 5px; height: 5px; }
+::-webkit-scrollbar-track   { background: transparent; }
+::-webkit-scrollbar-thumb   { background: #d0d0d5; border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: #a0a0a8; }
+
+
+/* ============================================================
+   13. MOBILE
+   ============================================================ */
+
+@media (max-width: 991px) {
+  .layout-side-section {
+    width:      100% !important;
+    min-height: unset !important;
+  }
+  .layout-main-section {
+    padding: 12px !important;
+  }
+}
+
+
+/* ============================================================
+   FIX: WORKSPACE SIDEBAR — Settings dropdown tidak terpotong
+   ============================================================ */
+
+/* Jangan clip overflow di sidebar agar dropdown/tooltip bisa keluar */
+.layout-side-section,
+.desk-sidebar,
+.workspace-sidebar,
+.standard-sidebar-section {
+  overflow: visible !important;
+}
+
+/* Khusus scroll area — hanya bagian isi yang scroll, bukan wrapper */
+.layout-side-section .standard-sidebar-section {
+  overflow-y: auto !important;
+  overflow-x: visible !important;
+}
+
+/* Pastikan action button (⠿ dan ···) muncul di atas segalanya */
+.sidebar-item-action,
+.standard-sidebar-item .sidebar-item-control,
+.standard-sidebar-item .widget-control,
+.standard-sidebar-item .btn-more,
+.standard-sidebar-item .dropdown-menu,
+.standard-sidebar-item .popover,
+.sidebar-item-container .dropdown-menu {
+  z-index: 9999 !important;
+  position: relative !important;
+  overflow: visible !important;
+}
+
+/* Dropdown menu yang muncul dari sidebar item */
+.standard-sidebar-item .dropdown,
+.standard-sidebar-item .dropdown-toggle {
+  position:  static !important;
+  overflow:  visible !important;
+}
+
+.standard-sidebar-item .dropdown-menu {
+  position: absolute !important;
+  z-index:  9999 !important;
+  overflow: visible !important;
+  left:     100% !important;
+  top:      0 !important;
+  margin:   0 !important;
+}
+
+/* Tooltip "Setting" */
+.tooltip,
+.bs-tooltip-top,
+.bs-tooltip-bottom,
+.bs-tooltip-left,
+.bs-tooltip-right {
+  z-index: 99999 !important;
+}
+
+/* ============================================================
+   POLISH: WORKSPACE SIDEBAR (panel PUBLIC/module list)
+   ============================================================ */
+
+/* Kontainer panel workspace sidebar (bukan main nav) */
+.desk-sidebar-item,
+.workspace-sidebar .standard-sidebar-item {
+  border-radius: var(--r-md) !important;
+  padding:       7px 10px !important;
+  margin-bottom: 1px !important;
+  transition:    background 0.13s !important;
+}
+
+/* Saat hover — tampilkan action buttons dengan mulus */
+.standard-sidebar-item:hover .sidebar-item-action,
+.standard-sidebar-item:hover .sidebar-item-control {
+  opacity:    1 !important;
+  visibility: visible !important;
+}
+
+/* Action button (⠿ dan ···) — defaultnya tersembunyi, muncul saat hover */
+.sidebar-item-action,
+.sidebar-item-control {
+  opacity:    0 !important;
+  visibility: hidden !important;
+  transition: opacity 0.15s !important;
+  display:    inline-flex !important;
+  align-items: center !important;
+  gap:         2px !important;
+  margin-left: auto !important;
+}
+
+/* Tombol individual action */
+.sidebar-item-action .btn,
+.sidebar-item-control .btn,
+.sidebar-item-action button,
+.sidebar-item-control button {
+  background:    transparent !important;
+  border:        none !important;
+  padding:       2px 4px !important;
+  border-radius: var(--r-sm) !important;
+  color:         var(--tx-muted) !important;
+  font-size:     13px !important;
+  cursor:        pointer !important;
+  transition:    background 0.12s, color 0.12s !important;
+}
+
+.sidebar-item-action .btn:hover,
+.sidebar-item-control .btn:hover {
+  background: rgba(0,0,0,.06) !important;
+  color:      var(--tx-primary) !important;
+}
+
+/* Panel PUBLIC label */
+.desk-sidebar .list-sidebar-label,
+.workspace-sidebar .list-sidebar-label,
+.desk-sidebar .sidebar-group-title {
+  font-size:      10px !important;
+  font-weight:    700 !important;
+  letter-spacing: 0.09em !important;
+  text-transform: uppercase !important;
+  color:          var(--tx-muted) !important;
+  padding:        12px 10px 4px !important;
+  display:        flex !important;
+  align-items:    center !important;
+  gap:            6px !important;
+}
+
+/* Chevron collapse PUBLIC */
+.desk-sidebar .sidebar-group-title .toggle-btn,
+.workspace-sidebar .collapse-indicator {
+  margin-left: auto !important;
+  color:       var(--tx-muted) !important;
+  font-size:   10px !important;
+}
